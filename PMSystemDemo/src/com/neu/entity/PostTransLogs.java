@@ -2,8 +2,9 @@ package com.neu.entity;
 
 import java.util.Date;
 
-/*create table deptTransLogs(
+/*create table postTransLogs(
 		id int primary key auto_increment,
+		dname varchar(20) not null,
 		oldName varchar(20) not null,
 		newName varchar(20) not null,
 		name varchar(20) not null,
@@ -12,19 +13,28 @@ import java.util.Date;
 		reason varchar(20) not null,
 		startTime date not null,
 		endTime date not null
-	);*/
 
-public class DeptTransLogs {
+	);*/
+public class PostTransLogs {
 	private Integer id ;
+	private String dName;
 	private String oldName;
-	public DeptTransLogs() {
+	private String newName;
+	private String name;
+	private String gender;
+	private Date date;
+	private String reason;
+	private Date startTime;
+	private Date endTime;
+	public PostTransLogs() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public DeptTransLogs(Integer id, String oldName, String newName, String name, String gender, Date date,
-			String reason, Date startTime, Date endTime) {
+	public PostTransLogs(Integer id, String dName, String oldName, String newName, String name, String gender,
+			Date date, String reason, Date startTime, Date endTime) {
 		super();
 		this.id = id;
+		this.dName = dName;
 		this.oldName = oldName;
 		this.newName = newName;
 		this.name = name;
@@ -39,6 +49,12 @@ public class DeptTransLogs {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public String getdName() {
+		return dName;
+	}
+	public void setdName(String dName) {
+		this.dName = dName;
 	}
 	public String getOldName() {
 		return oldName;
@@ -88,12 +104,4 @@ public class DeptTransLogs {
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-	private String newName;
-	private String name;
-	private String gender;
-	private Date date;
-	private String reason;
-	private Date startTime;
-	private Date endTime;
-
 }

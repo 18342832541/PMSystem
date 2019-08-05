@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -251,13 +252,22 @@
 				</div>	
 			</div>	
 
-            <div class="alert alert-error">
-                保存失败
-            </div>
+		<c:choose>
+			<c:when test="${ n==1 }">
+				 <div class="alert alert-success">
+                	保存成功
+            	</div>
+			</c:when>
+			
+			<c:when test="${ n==0 }">
+				   <div class="alert alert-error">
+		            	    保存失败
+		           </div>
+			</c:when>
+		</c:choose>
+          
 
-            <div class="alert alert-success">
-                保存成功
-            </div>
+           
 
 			
 		</div>		

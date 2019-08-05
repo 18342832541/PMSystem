@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -180,13 +183,13 @@
         
 		<div id="content">
 			<div id="content-header">
-				<h1>修改登录密码</h1>
+				<h1>报表信息管理</h1>
 			</div>
 			<div id="breadcrumb">
 				<a href="main.html" class="tip-bottom">
                 	<i class="icon-home"></i>首页
                 </a>
-				<a href="#" class="current">修改登录密码</a>
+				<a href="#" class="current">报表信息管理</a>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
@@ -194,55 +197,65 @@
 							<div class="widget-box">
 								<div class="widget-title">
 									<span class="icon">
-										<i class="icon-align-justify"></i>									
+										<i class="icon-align-justify"></i>					
 									</span>
-									<h5>修改登录密码</h5>
+									<c:choose>
+										<c:when test="">此处根据需要显示界面</c:when>
+										<c:when test=""></c:when>
+										<c:when test="">此处根据需要显示界面</c:when>
+										<c:when test=""></c:when>
+										<c:when test=""></c:when>
+									</c:choose>
+									<!-- 此处也需要做相应变换 -->
+									<h5>职位信息管理${ logsInfo }</h5>
 								</div>
-								<div class="widget-content nopadding">
-									<form id="pform" action="#" method="post" class="form-horizontal" />
-	                                    <div id="info1" class="control-group">
-	                                        <label class="control-label">
-	                                        	<span style="color: red">*</span>
-	                                        	原密码:
-	                                        </label>
-	                                        <div class="controls">
-	                                            <input type="password" name="pass1" id="pass1" />
-	                                        </div>
-	                                    </div>
-	                                    <div id="info2" class="control-group">
-	                                       <label class="control-label">
-	                                        	<span style="color: red">*</span>
-	                                        	新密码:
-	                                        </label>
-	                                        <div class="controls">
-	                                            <input type="password" name="pass2" id="pass2" />
-	                                        </div>
-	                                    </div>
-	                                    <div id="info3" class="control-group">
-	                                        <label class="control-label">
-	                                        	<span style="color: red">*</span>
-	                                        	确认新密码:
-	                                        </label>
-	                                        <div class="controls">
-	                                            <input type="password" name="pass3" id="pass3" />
-	                                        </div>
-	                                    </div>
-	                                    <div class="form-actions">
-	                                        <input type="submit" value="提交" class="btn btn-primary" />
-	                                        <input type="reset" value="重置" class="btn btn-primary" />
-	                                    </div>
-	                                </form>
-								</div>
-							</div>			
+								<hr/>
+			<div class="row-fluid">
+				<div class="span12" style="padding-left:30px;">
+					<div class="widget-box">
+						<div class="widget-content nopadding">
+							<c:choose>
+								<c:when test="">此处根据需要显示界面</c:when>
+								<c:when test=""></c:when>
+								<c:when test="">此处根据需要显示界面</c:when>
+								<c:when test=""></c:when>
+								<c:when test=""></c:when>
+							</c:choose>
+							<!-- <table class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>序号</th>
+										<th>部门名称</th>
+										<th>岗位</th>
+										<th>姓名</th>
+										<th>性别</th>
+										<th>入职日期</th>
+										<th>学历</th>
+									</tr>
+								</thead>
+								<tbody>
+                                    <tr>
+                                        此处用estl遍历
+                                    </tr>
+								</tbody>
+							</table>	  -->
 						</div>
-				</div>	
-			</div>	
-            <div class="alert alert-error">
-                保存失败
-            </div>
-            <div class="alert alert-success">
-                保存成功
-            </div>
+					</div>
+				</div>
+			</div>
+			<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+				<div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
+			<a tabindex="0" href="javascript:"+method+"(1)" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
+			<a tabindex="0" href="#" class="previous fg-button ui-button ui-state-default">上一页</a>
+            <a tabindex="0" href="#" class="fg-button ui-button ui-state-default">1</a>
+            <a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">2
+            </a>
+            <a tabindex="0" href="#" class="fg-button ui-button ui-state-default">3</a>
+            <a tabindex="0" href="#" class="previous fg-button ui-button ui-state-default">下一页</a>
+			<a tabindex="0" href="#" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
+			
+			</div>
+			</div>
 		</div>		
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
@@ -253,4 +266,3 @@
 		
 	</body>
 </html>
-
