@@ -24,26 +24,7 @@ public class PostTransLogs {
 	private String gender;
 	private Date date;
 	private String reason;
-	private Date startTime;
-	private Date endTime;
-	public PostTransLogs() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public PostTransLogs(Integer id, String dName, String oldName, String newName, String name, String gender,
-			Date date, String reason, Date startTime, Date endTime) {
-		super();
-		this.id = id;
-		this.dName = dName;
-		this.oldName = oldName;
-		this.newName = newName;
-		this.name = name;
-		this.gender = gender;
-		this.date = date;
-		this.reason = reason;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
+	private Date logsDate;
 	public Integer getId() {
 		return id;
 	}
@@ -92,16 +73,28 @@ public class PostTransLogs {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public Date getStartTime() {
-		return startTime;
+	public Date getLogsDate() {
+		return logsDate;
 	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setLogsDate(Date logsDate) {
+		this.logsDate = logsDate;
 	}
-	public Date getEndTime() {
-		return endTime;
+	public PostTransLogs(Integer id, String dName, String oldName, String newName, String name, String gender,
+			Date date, String reason, Date logsDate) {
+		super();
+		this.id = id;
+		this.dName = dName;
+		this.oldName = oldName;
+		this.newName = newName;
+		this.name = name;
+		this.gender = gender;
+		this.date = date;
+		this.reason = reason;
+		this.logsDate = logsDate;
 	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public PostTransLogs() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+	
 }

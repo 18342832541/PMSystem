@@ -18,25 +18,11 @@ public class InEmpLogs {
 	private Integer id ;
 	private String dName;
 	private String pName;
+	private String eName;
 	private String gender;
 	private Date hiredate;
 	private String education;
-	public InEmpLogs() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public InEmpLogs(Integer id, String dName, String pName, String gender, Date hiredate, String education,
-			Date startTime, Date endTime) {
-		super();
-		this.id = id;
-		this.dName = dName;
-		this.pName = pName;
-		this.gender = gender;
-		this.hiredate = hiredate;
-		this.education = education;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
+	private Date logsDate;
 	public Integer getId() {
 		return id;
 	}
@@ -54,6 +40,12 @@ public class InEmpLogs {
 	}
 	public void setpName(String pName) {
 		this.pName = pName;
+	}
+	public String geteName() {
+		return eName;
+	}
+	public void seteName(String eName) {
+		this.eName = eName;
 	}
 	public String getGender() {
 		return gender;
@@ -73,19 +65,29 @@ public class InEmpLogs {
 	public void setEducation(String education) {
 		this.education = education;
 	}
-	public Date getStartTime() {
-		return startTime;
+	public Date getLogsDate() {
+		return logsDate;
 	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setLogsDate(Date logsDate) {
+		this.logsDate = logsDate;
 	}
-	public Date getEndTime() {
-		return endTime;
+	public InEmpLogs(Integer id, String dName, String pName, String eName, String gender, Date hiredate,
+			String education, Date logsDate) {
+		super();
+		this.id = id;
+		this.dName = dName;
+		this.pName = pName;
+		this.eName = eName;
+		this.gender = gender;
+		this.hiredate = hiredate;
+		this.education = education;
+		this.logsDate = logsDate;
 	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public InEmpLogs() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	private Date startTime;
-	private Date endTime;
+
+	
 
 }

@@ -1,28 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>企业人事管理平台</title>
 		<meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-		<link rel="stylesheet" href="css/fullcalendar.css" />	
+		<link rel="stylesheet" href="css/uniform.css" />
+		<link rel="stylesheet" href="css/datepicker.css" />	
 		<link rel="stylesheet" href="css/unicorn.main.css" />
-		<link rel="stylesheet" href="css/unicorn.grey.css" class="skin-color" />
-		<script src="js/excanvas.min.js"></script>
-        <script src="js/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/unicorn.grey.css" class="skin-color" />			
+		<script src="js/jquery.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.flot.min.js"></script>
-        <script src="js/jquery.flot.resize.min.js"></script>
-        <script src="js/jquery.peity.min.js"></script>
-        <script src="js/fullcalendar.min.js"></script>
+        <script src="js/jquery.uniform.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/jquery.validate.js"></script>
         <script src="js/unicorn.js"></script>
-        <script src="js/unicorn.dashboard.js"></script>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+        <script src="js/addemp.js"></script>	            
+	</head>	
 	<body>
 		<div id="header"><h1></h1></div>
-		<div id="user-nav" class="navbar navbar-inverse">
+		
+        <div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
                 <li class="btn btn-inverse">
                     <a href="#">
@@ -42,7 +45,7 @@
         </div>
         <div id="sidebar">
             <ul>
-                <li class="active">
+                <li>
                     <a href="main.html">
                         <i class="icon icon-home"></i> 
                         <span>首页</span>
@@ -78,7 +81,7 @@
                         <li><a href="vtypelist.html">假期类型管理</a></li>
                     </ul>
                 </li>
-                <li>
+                <li class="active">
                     <a href="emplist.html">
                         <i class="icon icon-user"></i> 
                         <span>员工信息管理</span> 
@@ -96,64 +99,62 @@
                         <span>职位信息管理</span> 
                     </a>
                 </li>
-                <li class="submenu">
-                    <a href="#">
-                        <i class="icon icon-briefcase"></i> 
-                        <span>报表信息管理</span> 
-                    </a>
-                    <ul>
-                        <li><a href="LogsServlet?logsInfo=inEmp">新聘员工报表</a></li>
-                        <li><a href="LogsServlet?logsInfo=outEmp">离职员工报表</a></li>
-                        <li><a href="LogsServlet?logsInfo=deptTrans">部门调动员工报表</a></li>
-                        <li><a href="LogsServlet?logsInfo=postTrans">岗位调动员工报表</a></li>
-                        <li><a href="LogsServlet?logsInfo=Personnel">人事月报</a></li>
-                    </ul>
-                </li>
             </ul>
         </div>
-        
-        
 		<div id="content">
 			<div id="content-header">
-				<h1>首页</h1>
+				<h1>新增员工</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="#" class="tip-bottom">
+				<a href="main.html" class="tip-bottom">
                 	<i class="icon-home"></i>
                                                     首页
                 </a>
+				<a href="emplist.html">员工信息管理</a>
+				<span class="current">员工离职</span>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<div class="span12 center" >					
-						<div class="widget-box">
-							<div class="widget-title">
-                            	<span class="icon">
-                                	<i class="icon-file"></i>
-                                </span>
-                                
-                                <h5>待办事项</h5>
-                                <span class="label label-info tip-left" 
-                                style="float:left">1</span>
-                            </div>
-							<div class="widget-content nopadding">
-								<ul class="recent-posts">
-									<li>
-										<div class="article-post">
-											<span class="user-info">
-                                            	2个员工请假申请，请<a href="#">点击这里</a>进行审批
-                                            </span>
-										</div>
-									</li>
-								</ul>
-							</div>
+						<div class="span12">
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="icon">
+										<i class="icon-align-justify"></i>									
+									</span>
+									<h5>离职原因</h5>
+								</div>
+								<div class="widget-content nopadding">
+									<form id="eform" action="#" class="form-horizontal" method="post" >
+	                                    <div id="info1" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	离职原因:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <textarea name="reason" id="reason" ></textarea>
+	                                        </div>
+	                                         <div class="form-actions">
+	                                        <input type="submit" value="提交" class="btn btn-primary" />
+	                                        <input type="reset" value="重置" class="btn btn-primary" />
+	                                    	</div>
+	                                    </div>
+	                                </form>
+								</div>
+							</div>			
 						</div>
-					
-					</div>	
-				</div>
+				</div>	
 			</div>
-			 
-		</div>
+
+            <div class="alert alert-error">
+                操作失败
+            </div>
+
+            <div class="alert alert-success">
+                操作成功
+            </div>
+
+			
+		</div>		
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
@@ -163,4 +164,3 @@
 		
 	</body>
 </html>
-

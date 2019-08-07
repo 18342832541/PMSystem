@@ -1,4 +1,4 @@
-package com.neu.service;
+package com.neu.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -9,18 +9,18 @@ import com.neu.entity.OutEmpLogs;
 import com.neu.entity.PersonnelLogs;
 import com.neu.entity.PostTransLogs;
 
-public interface LogsService {
+public interface LogsDao {
 	int getInEmpLogsPageNum(Date startTime, Date endTime) throws Exception;
 	int getOutEmpLogsPageNum(Date startTime, Date endTime) throws Exception;
 	int getPersonnelLogsPageNum(Date startTime, Date endTime) throws Exception;
 	int getPostTransLogsPageNum(Date startTime, Date endTime) throws Exception;
 	int getDeptTransLogsPageNum(Date startTime, Date endTime) throws Exception;
 	
-	int addInEmpLogs(InEmpLogs inEmpLogs) throws Exception;
-	int addOutEmpLogs(OutEmpLogs outEmpLogs) throws Exception;
-	int addPersonnelLogs(PersonnelLogs personnelLogs) throws Exception;
-	int addPostTransLogs(PostTransLogs postTransLogs) throws Exception;
-	int addDeptTransLogs(DeptTransLogs deptTransLogs) throws Exception;
+	int insertInEmpLogs(InEmpLogs inEmpLogs) throws Exception;
+	int insertOutEmpLogs(OutEmpLogs outEmpLogs) throws Exception;
+	int insertPersonnelLogs(PersonnelLogs personnelLogs) throws Exception;
+	int insertPostTransLogs(PostTransLogs postTransLogs) throws Exception;
+	int insertDeptTransLogs(DeptTransLogs deptTransLogs) throws Exception;
 	
 	PersonnelLogs getById(String dName) throws Exception;
 	int updatePersonnelLogs(PersonnelLogs personnelLogs) throws Exception;

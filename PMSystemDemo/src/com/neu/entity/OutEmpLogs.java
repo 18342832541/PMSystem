@@ -22,8 +22,7 @@ public class OutEmpLogs {
 	private String gender;
 	private Date leaveDate;
 	private String reason;
-	private Date startTime;
-	private Date endTime;
+	private Date logsDate;
 	public Integer getId() {
 		return id;
 	}
@@ -66,20 +65,14 @@ public class OutEmpLogs {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public Date getStartTime() {
-		return startTime;
+	public Date getLogsDate() {
+		return logsDate;
 	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-	public Date getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public void setLogsDate(Date logsDate) {
+		this.logsDate = logsDate;
 	}
 	public OutEmpLogs(Integer id, String dName, String pName, String eName, String gender, Date leaveDate,
-			String reason, Date startTime, Date endTime) {
+			String reason, Date logsDate) {
 		super();
 		this.id = id;
 		this.dName = dName;
@@ -88,12 +81,11 @@ public class OutEmpLogs {
 		this.gender = gender;
 		this.leaveDate = leaveDate;
 		this.reason = reason;
-		this.startTime = startTime;
-		this.endTime = endTime;
+		this.logsDate = logsDate;
 	}
 	public OutEmpLogs() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 }

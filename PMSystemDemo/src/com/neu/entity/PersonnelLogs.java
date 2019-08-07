@@ -19,7 +19,7 @@ import java.util.Date;
 )*/
 
 public class PersonnelLogs {
-	private Integer id ;
+	private String dName;
 	private Integer earlyMonthAll;	//月初人数
 	private Integer endMonthAll ;	//月末人数
 	private Integer hireNumber;		//新入职人数
@@ -30,35 +30,12 @@ public class PersonnelLogs {
 	private Integer junior ;		//大专学历
 	private Integer regular;		//本科学历
 	private Integer graduate ;		//研究生学历
-	private Date startTime;
-	private Date endTime;
-	public PersonnelLogs() {
-		super();
-		// TODO Auto-generated constructor stub
+	private Date logsDate;
+	public String getdName() {
+		return dName;
 	}
-	public PersonnelLogs(Integer id, Integer earlyMonthAll, Integer endMonthAll, Integer hireNumber,
-			Integer leaveNumber, Integer inNumber, Integer outNumber, Integer highSchool, Integer junior,
-			Integer regular, Integer graduate, Date startTime, Date endTime) {
-		super();
-		this.id = id;
-		this.earlyMonthAll = earlyMonthAll;
-		this.endMonthAll = endMonthAll;
-		this.hireNumber = hireNumber;
-		this.leaveNumber = leaveNumber;
-		this.inNumber = inNumber;
-		this.outNumber = outNumber;
-		this.highSchool = highSchool;
-		this.junior = junior;
-		this.regular = regular;
-		this.graduate = graduate;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setdName(String dName) {
+		this.dName = dName;
 	}
 	public Integer getEarlyMonthAll() {
 		return earlyMonthAll;
@@ -120,16 +97,33 @@ public class PersonnelLogs {
 	public void setGraduate(Integer graduate) {
 		this.graduate = graduate;
 	}
-	public Date getStartTime() {
-		return startTime;
+	public Date getLogsDate() {
+		return logsDate;
 	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setLogsDate(Date logsDate) {
+		this.logsDate = logsDate;
 	}
-	public Date getEndTime() {
-		return endTime;
+	public PersonnelLogs(String dName, Integer earlyMonthAll, Integer endMonthAll, Integer hireNumber,
+			Integer leaveNumber, Integer inNumber, Integer outNumber, Integer highSchool, Integer junior,
+			Integer regular, Integer graduate, Date logsDate) {
+		super();
+		this.dName = dName;
+		this.earlyMonthAll = earlyMonthAll;
+		this.endMonthAll = endMonthAll;
+		this.hireNumber = hireNumber;
+		this.leaveNumber = leaveNumber;
+		this.inNumber = inNumber;
+		this.outNumber = outNumber;
+		this.highSchool = highSchool;
+		this.junior = junior;
+		this.regular = regular;
+		this.graduate = graduate;
+		this.logsDate = logsDate;
 	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public PersonnelLogs() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+	
+	
 }

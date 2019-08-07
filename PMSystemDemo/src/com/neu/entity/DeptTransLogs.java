@@ -17,23 +17,12 @@ import java.util.Date;
 public class DeptTransLogs {
 	private Integer id ;
 	private String oldName;
-	public DeptTransLogs() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public DeptTransLogs(Integer id, String oldName, String newName, String name, String gender, Date date,
-			String reason, Date startTime, Date endTime) {
-		super();
-		this.id = id;
-		this.oldName = oldName;
-		this.newName = newName;
-		this.name = name;
-		this.gender = gender;
-		this.date = date;
-		this.reason = reason;
-		this.startTime = startTime;
-		this.endTime = endTime;
-	}
+	private String newName;
+	private String name;
+	private String gender;
+	private Date date;
+	private String reason;
+	private Date logsDate;
 	public Integer getId() {
 		return id;
 	}
@@ -76,24 +65,27 @@ public class DeptTransLogs {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public Date getStartTime() {
-		return startTime;
+	public Date getLogsDate() {
+		return logsDate;
 	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setLogsDate(Date logsDate) {
+		this.logsDate = logsDate;
 	}
-	public Date getEndTime() {
-		return endTime;
+	public DeptTransLogs(Integer id, String oldName, String newName, String name, String gender, Date date,
+			String reason, Date logsDate) {
+		super();
+		this.id = id;
+		this.oldName = oldName;
+		this.newName = newName;
+		this.name = name;
+		this.gender = gender;
+		this.date = date;
+		this.reason = reason;
+		this.logsDate = logsDate;
 	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public DeptTransLogs() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	private String newName;
-	private String name;
-	private String gender;
-	private Date date;
-	private String reason;
-	private Date startTime;
-	private Date endTime;
 
 }
