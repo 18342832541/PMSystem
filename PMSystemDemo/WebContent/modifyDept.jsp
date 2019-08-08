@@ -103,6 +103,7 @@
                         <span>修改登录密码</span>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="submenu">
                     <a href="#">
                         <i class="icon icon-time"></i> 
@@ -121,6 +122,8 @@
                         <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
+=======
+>>>>>>> refs/remotes/origin/master
                 <li>
                     <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
@@ -128,13 +131,21 @@
                     </a>
                 </li>
                 <li class="active">
+<<<<<<< HEAD
                     <a href="deptlist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="joblist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -163,49 +174,73 @@
 									</span>
 									<h5>部门信息</h5>
 								</div>
-								<div class="widget-content nopadding">
-									<form id="eform" action="#" class="form-horizontal" method="post" />
+							<div class="widget-content nopadding">
+									<form action="${pageContext.request.contextPath}/UpdateDeptServlet" method="post">                                   
 	                                    <div id="info1" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	编号：
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="number" name="id" id="id" value="${dept.id}" />
+	                                        </div>
+	                                    </div>
+	                                      <div id="info1" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
 	                                        	部门名称:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="text" name="dname" id="dname" value="研发一部" />
+	                                            <input type="text" name="dname" id="dname" value="${dept.dname}"  />
+	                                        </div>
+	                                    </div>
+	                                    <div id="info1" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	部门类型:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="text" name="type" id="type" value="${dept.type}" />
 	                                        </div>
 	                                    </div>
 	                                    <div id="info2" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	负责人员工编号:
+	                                        	电话：
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="text" name="userid" id="userid" value="1045" />
-	                                            <span id="span1">李建国</span>
+	                                            <input type="text" name="phone" id="phone" value="${dept.phone}"/>
 	                                        </div>
 	                                    </div>
-	                                    <div id="info3" class="control-group">
+	                                    <div id="info1" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	部门编制:
+	                                                                                                                                   邮箱  :
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="number" name="dno" id="dno" value="30" />
+	                                            <input type="text" name="email" id="email" value="${dept.email}" />
 	                                        </div>
 	                                    </div>
-	                                    <div id="info4" class="control-group">
+	                                     <div id="info1" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	上级部门:
+	                                        	描述:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <select id="uplevel" name="uplevel">
-	                                            	<option value="-1">无上级部门</option>
-	                                            	<option value="100" selected>研发中心</option>
-	                                            	<option value="102">研发二部</option>
-	                                            </select>
+	                                            <input type="text" name="depict" id="depict" value="${dept.depict}" />
 	                                        </div>
 	                                    </div>
+	                                     <div id="info1" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	上级:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="text" name="mgr" id="mgr" value="${dept.mgr}" />
+	                                        </div>
+	                                    </div>
+	                                            <input type="hidden" name="date" id="date" value="${dept.date}" />
+	                                                               
 	                                    <div class="form-actions">
 	                                        <input type="submit" value="提交" class="btn btn-primary" />
 	                                        <input type="reset" value="重置" class="btn btn-primary" />
@@ -216,6 +251,7 @@
 						</div>
 				</div>	
 			</div>	
+<<<<<<< HEAD
 
             <div class="alert alert-error">
 <!--                 保存失败
@@ -227,10 +263,13 @@
 
 			
 		</div>		
+=======
+		</div>	
+>>>>>>> refs/remotes/origin/master
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
-                2016 &copy; 企业人事管理平台
+                2019 &copy; 企业人事管理平台
             </div>
         </div>
 		

@@ -64,6 +64,7 @@
                         <span>假的·修改登录密码</span>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="submenu">
                     <a href="#">
                         <i class="icon icon-time"></i> 
@@ -82,20 +83,34 @@
                         <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
+=======
+>>>>>>> refs/remotes/origin/master
                 <li>
+<<<<<<< HEAD
                     <a href="${pageContext.request.contextPath }/GetAllEmpsServle">
+=======
+                    <a href="emplist.jsp">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-user"></i> 
                         <span>真的·员工信息管理</span> 
                     </a>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="deptlist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-flag"></i> 
                         <span>假的·部门信息管理</span> 
                     </a>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="joblist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-briefcase"></i> 
                         <span>假的·职位信息管理</span> 
                     </a>
@@ -161,7 +176,7 @@
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
-                2016 &copy; 企业人事管理平台
+                2019 &copy; 企业人事管理平台
             </div>
         </div>
 		

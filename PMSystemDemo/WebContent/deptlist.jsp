@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+=======
+<!DOCTYPE html>
+>>>>>>> refs/remotes/origin/master
 <html>
 	<head>
 		<title>企业人事管理平台</title>
 		<title>Insert title here</title>
 		<meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/jsp; charset=utf-8" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" href="css/colorpicker.css" />
@@ -70,6 +74,7 @@
                         <span>修改登录密码</span>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="submenu">
                     <a href="#">
                         <i class="icon icon-time"></i> 
@@ -88,6 +93,8 @@
                         <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
+=======
+>>>>>>> refs/remotes/origin/master
                 <li>
                     <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
@@ -95,13 +102,21 @@
                     </a>
                 </li>
                 <li class="active">
+<<<<<<< HEAD
                     <a href="deptlist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="joblist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -114,41 +129,32 @@
 				<h1>部门信息管理</h1>
 			</div>
 			<div id="breadcrumb">
+<<<<<<< HEAD
 				<a href="main.jsp" class="tip-bottom">
+=======
+			<a href="#" class="tip-bottom">
+>>>>>>> refs/remotes/origin/master
                 	<i class="icon-home"></i>
                                                     首页
                 </a>
-				<a href="#" class="current">部门信息管理</a>
+				<a href="" class="current">部门信息管理</a>
 			</div>
-			<form action="#" method="post" name="searchForm">
-			<input type="hidden" name="pagenum" id="pagenum"/>
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="control-group">
 						<span class="span3">
-							名称：<input id="ename" name="ename" type="text" style="width:65%"/>
-						</span>
-						<span class="span3">
-							状态：<select id="eflag" name="eflag" style="width:70%">
-									<option value="-1">=请选择=</option>
-									<option value="1">活动</option>
-                                    <option value="2">撤销</option>
-								</select>
+							编号：<input id="ename" name="ename" type="text" style="width:65%"/>
 						</span>
                         <span class="span3">
-							<button class="btn btn-info" onclick="submitForm(1);">
+							<button class="btn btn-info" onclick="selectById()">
 								<i class="icon-white icon-search"></i>
 								查询
 							</button>
-							<button type="button" class="btn btn-info" onclick="resetForm();">
-								<i class="icon-white icon-repeat"></i>
-								重置
-							</button>
+							<input type="reset">
 						</span>
 					</div>
 				</div>
 			</div>
-			</form>
 			<hr/>
 			<div class="row-fluid">
 				<div class="span12" style="padding-left:30px;">
@@ -156,104 +162,139 @@
 						<i class="icon-white icon-plus"></i>
 						新增
 					</button>
+<<<<<<< HEAD
 					<script type="text/javascript">
 						function addDept(){
 							location.href="addDept.jsp";
 						}
 					</script>
+=======
+>>>>>>> refs/remotes/origin/master
 				</div>
 				<div class="span12">
 					<div class="widget-box">
 						<div class="widget-content nopadding">
 							<table class="table table-bordered table-striped">
-								<thead>
 									<tr>
 										<th>编号</th>
 										<th>部门名称</th>
-										<th>负责人姓名</th>
-										<th>部门编制</th>
-										<th>状态</th>
-										<th>操作</th>
+										<th>部门类型</th>	
+										<th>电话</th>							
+										<th>上级部门</th>
+										<th>日期</th>
+										<th>编辑</th>
 									</tr>
-								</thead>
-								<tbody>
+							<c:forEach items="${list }" var="dept" varStatus="d">
                                     <tr>
-                                        <td>101</td>
-                                        <td>研发一部</td>
-                                        <td>李建国</td>
-                                        <td>50</td>
-                                        <td>活动</td>
+                            <td>${ dept.id }</td>
+                            <td>${ dept.dname }</td>
+                            <td>${ dept.type }</td>
+                            <td>${ dept.phone }</td> 
+                            <td>${ dept.mgr }</td> 
+                            <td>${ dept.date }</td> 
                                         <td>
-                                            <button class="btn btn-info" onclick="allmessage()">
+                                            <button class="btn btn-info" onclick="GetAllDeptServlet${d.index}()">
                                                 <i class="icon-white icon-eye-open"></i>
-                                                查看
+                                             	   查看
                                             </button>
-                                            <button class="btn btn-warning" onclick="gotomodify()">
+                                            <button class="btn btn-warning" onclick="UpdateDeptServlet${d.index}()">
                                                 <i class="icon-white icon-refresh"></i>
-                                                修改
+                                                                                                                                                  修改                                                       
+                                            </button>
+                                             <button class="btn btn-danger" onclick="DelDeptServlet${d.index}()">
+                                                <i class="icon-white icon-minus"></i>
+                                             	   删除                                                                                         
                                             </button>
                                             
                                             <script type="text/javascript">
+<<<<<<< HEAD
 											  function allmessage(){
                                                    location.href="viewdeptinfo.jsp";
+=======
+											  function GetAllDeptServlet${d.index}(){
+
+                              location.href="${pageContext.request.contextPath }/GetDeptByIdServlet?id=${dept.id}";
+>>>>>>> refs/remotes/origin/master
                                                }
+<<<<<<< HEAD
                                               function gotomodify(){
                                                   location.href="modifydept.jsp";
+=======
+                                              function UpdateDeptServlet${d.index}(){
+
+                              location.href="${pageContext.request.contextPath}/GetUpDeptServlet?id=${dept.id}";;
+>>>>>>> refs/remotes/origin/master
                                               }
+                                              function DelDeptServlet${d.index}(){
+                                            	  if(confirm("确定删除吗？")){
+                              location.href="${pageContext.request.contextPath }/DeleteDeptServlet?id=${dept.id}";  
+                                            		  
+                                            		  
+                                            	  }
+                                              }
+                                            
                                             </script>
-                                            <button class="btn btn-danger">
-                                                <i class="icon-white icon-minus"></i>
-                                                撤销
-                                            </button>
+                                           
                                         </td>
+                                   
                                     </tr>
-                                    <tr>
-                                        <td>102</td>
-                                        <td>研发二部</td>
-                                        <td>王五六</td>
-                                        <td>40</td>
-                                        <td>撤销</td>
-                                        <td>
-                                            <button class="btn btn-info" onclick="allmessage()">
-                                                <i class="icon-white icon-eye-open"></i>
-                                                查看
-                                            </button>
-                                            <button class="btn btn-warning" onclick="gotomodify()">
-                                                <i class="icon-white icon-refresh"></i>
-                                                修改
-                                            </button>
-                                            <button class="btn btn-info">
-                                                <i class="icon-white icon-plus"></i>
-                                                恢复
-                                            </button>
-                                        </td>
-                                    </tr>
-								</tbody>
+</c:forEach> 
+<tr>
+  <td colspan="7">
+  <c:if test="${pageNum==1 }">
+     首页 上一页
+  </c:if>
+  <c:if test="${pageNum>1 }">
+<a href="${ pageContext.request.contextPath }/GetAllDeptServlet?pageNum=1">[首页]</a>
+  <a href="${ pageContext.request.contextPath }/GetAllDeptServlet?pageNum=${ pageNum-1 }">[上一页]</a>
+  </c:if>
+ 
+   <c:forEach begin="1" end="${ page }" var="pageNum1">
+    <c:if test="${pageNum1==pageNum }">
+      [${pageNum1 }]
+   </c:if>
+    <c:if test="${pageNum1!=pageNum }">
+      <a href="${ pageContext.request.contextPath }/GetAllDeptServlet?pageNum=${ pageNum1 }">[${ pageNum1 }]</a>
+   </c:if>				
+   </c:forEach>
+   <c:if test="${pageNum==page }">
+      下一页   末页
+   </c:if>
+   <c:if test="${pageNum<page }">
+   <a href="${ pageContext.request.contextPath }/GetAllDeptServlet?pageNum=${ pageNum+1 }">下一页</a>
+   <a href="${ pageContext.request.contextPath }/GetAllDeptServlet?pageNum=${ page}">末页</a> 
+   </c:if>
+  </td>
+ </tr>                 
+
 							</table>							
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
-				<div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-			<a tabindex="0" href="javascript:"+method+"(1)" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
-			<a tabindex="0" href="#" class="previous fg-button ui-button ui-state-default">上一页</a>
-            <a tabindex="0" href="#" class="fg-button ui-button ui-state-default">1</a>
-            <a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">2
-            </a>
-            <a tabindex="0" href="#" class="fg-button ui-button ui-state-default">3</a>
-            <a tabindex="0" href="#" class="previous fg-button ui-button ui-state-default">下一页</a>
-			<a tabindex="0" href="#" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
 			
-			</div>
+			
 			</div>
 		</div>		
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
-                2016 &copy; 企业人事管理平台
+                2019 &copy; 企业人事管理平台
             </div>
         </div>
 	</body>
+	<script type="text/javascript">
+		function addDept(){
+			
+			location.href="${pageContext.request.contextPath }/addDept.jsp";
+		
+      }
+		function selectById(){
+			
+			location.href="${pageContext.request.contextPath }/GetUpDeptServlet?id="+$("#ename").val();
+		
+      }
+	</script>
 </html>
 

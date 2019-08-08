@@ -67,6 +67,7 @@
                         <span>修改登录密码</span>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="submenu">
                     <a href="#">
                         <i class="icon icon-time"></i> 
@@ -85,6 +86,8 @@
                         <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
+=======
+>>>>>>> refs/remotes/origin/master
                 <li>
                     <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
@@ -92,13 +95,21 @@
                     </a>
                 </li>
                 <li class="active">
+<<<<<<< HEAD
                     <a href="deptlist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="joblist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -132,60 +143,20 @@
                             <table width="100%">
                             	<tr>
                                 	<td width="15%" align="right">部门编号:</td>
-                                    <td width="60%" align="left">
-                                    	&nbsp;&nbsp;
-                                    	101
-                                    </td>
-                                    <td></td>
+                                    <td>${dept.id}</td>
                                 </tr>
                                 <tr>
                                 	<td align="right">部门名称:</td>
-                                    <td align="left">
-                                    	&nbsp;&nbsp;
-                                    	研发一部
-                                    </td>
-                                    <td></td>
+                                 	<td>${ dept.dname }</td>
                                 </tr>
                                 <tr>
-                                	<td align="right">部门负责人:</td>
-                                    <td align="left">
-                                    	&nbsp;&nbsp;
-                                    	李建国(员工编号：1045)
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                	<td align="right">员工人数/部门编制:</td>
-                                    <td align="left">
-                                    	&nbsp;&nbsp;
-                                    	32/50
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                	<td align="right">创建时间:</td>
-                                    <td align="left">
-                                    	&nbsp;&nbsp;
-                                    	2012-1-1
-                                    </td>
-                                    <td></td>
+                                	<td align="right">部门类型:</td>
+                                 <td>${ dept.type }</td>
                                 </tr>
                                 <tr>
                                 	<td align="right">上级部门:</td>
-                                    <td align="left">
-                                    	&nbsp;&nbsp;
-                                    	研发中心(部门编号:100)
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td align="right">状态:</td>
-                                    <td align="left">
-                                        &nbsp;&nbsp;
-                                        活动
-                                    </td>
-                                    <td></td>
-                                </tr>
+                                    <td>${dept.mgr }</td>
+                                </tr>  
                             </table>
 						</div>			
 					</div>

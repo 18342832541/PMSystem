@@ -34,7 +34,7 @@
                     <a href="#">
                         <i class="icon icon-user"></i>
                         <span class="text">
-                            张三
+                     
                         </span>
                     </a>
                 </li>
@@ -67,6 +67,7 @@
                         <span>修改登录密码</span>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="submenu">
                     <a href="#">
                         <i class="icon icon-time"></i> 
@@ -85,6 +86,8 @@
                         <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
+=======
+>>>>>>> refs/remotes/origin/master
                 <li>
                     <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
@@ -92,13 +95,21 @@
                     </a>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="deptlist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li class="active">
+<<<<<<< HEAD
                     <a href="joblist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -130,38 +141,39 @@
 								<h5>基础信息</h5>
 							</div>
                             <table width="100%">
-                            	<tr>
-                                	<td width="15%" align="right">职位编号:</td>
+                                <tr>
+                                	<td width="15%" align="right">编号:</td>
                                     <td width="60%" align="left">
-                                    	&nbsp;&nbsp;
-                                    	6001
+                                    	&nbsp;&nbsp;&nbsp;
+                                    	${job.id}
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                	<td align="right">职位名称:</td>
+                                	<td align="right">名称:</td>
                                     <td align="left">
-                                    	&nbsp;&nbsp;
-                                    	高级软件工程师
+                                    	&nbsp;&nbsp;&nbsp;
+                                        ${job.ename}
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                	<td align="right">职位级别:</td>
+                                	<td align="right">岗位类型:</td>
                                     <td align="left">
-                                    	&nbsp;&nbsp;
-                                    	12
+                                    	&nbsp;&nbsp;&nbsp;
+                                    	${job.postType}
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td align="right">状态:</td>
+                                	<td align="right">岗位编制:</td>
                                     <td align="left">
-                                        &nbsp;&nbsp;
-                                        活动
+                                    	&nbsp;&nbsp;&nbsp;
+                                    	${job.postAllot}
                                     </td>
                                     <td></td>
                                 </tr>
+                                
                             </table>
 						</div>			
 					</div>
@@ -188,26 +200,12 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>1001</td>
-								<td>张三</td>
-								<td>研发一部</td>
-								<td>男</td>
-                                <td>26</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+                                <td></td>
 							</tr>
-							<tr>
-								<td>1002</td>
-								<td>李四</td>
-                                <td>研发三部</td>
-								<td>男</td>
-                                <td>25</td>
-							</tr>
-                            <tr>
-                                <td>1010</td>
-                                <td>哈哈</td>
-                                <td>研发中心</td>
-                                <td>女</td>
-                                <td>25</td>
-                            </tr>
 						</tbody>
 					</table>							
 				</div>

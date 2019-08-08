@@ -95,6 +95,7 @@
                         <span>修改登录密码</span>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="submenu">
                     <a href="#">
                         <i class="icon icon-time"></i> 
@@ -113,6 +114,8 @@
                         <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
+=======
+>>>>>>> refs/remotes/origin/master
                 <li>
                     <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
@@ -120,13 +123,21 @@
                     </a>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <a href="deptlist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li class="active">
+<<<<<<< HEAD
                     <a href="joblist.jsp">
+=======
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
+>>>>>>> refs/remotes/origin/master
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -156,23 +167,42 @@
 									<h5>职位信息</h5>
 								</div>
 								<div class="widget-content nopadding">
-									<form id="eform" action="#" class="form-horizontal" method="post" />
+									<form id="eform" action="${pageContext.request.contextPath}/Update2Servlet" class="form-horizontal" method="post" />
+	                                     <div id="info1" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	编号：
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="number" name="id" id="id" value="${job.id}" />
+	                                        </div>
+	                                    </div>
+	                                      <div id="info1" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	名称:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="text" name="ename" id="ename" value="${job.ename}"  />
+	                                        </div>
+	                                    </div>
+
 	                                    <div id="info1" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	职位名称:
+	                                        	岗位类型:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="text" name="jname" id="jname" value="高级软件工程师" />
+	                                            <input type="text" name="postType" id="postType" value="${job.postType}" />
 	                                        </div>
 	                                    </div>
 	                                    <div id="info2" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	职位级别:
+	                                        	岗位编制:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="number" name="jlevel" id="jlevel" value="4" />
+	                                            <input type="text" name="postAllot" id="postAllot" value="${job.postAllot}"/>
 	                                        </div>
 	                                    </div>
 	                                    <div class="form-actions">
@@ -185,21 +215,11 @@
 						</div>
 				</div>	
 			</div>	
-
-            <div class="alert alert-error">
-                保存失败
-            </div>
-
-            <div class="alert alert-success">
-                保存成功
-            </div>
-
-			
 		</div>		
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
-                2016 &copy; 企业人事管理平台
+                2019 &copy; 企业人事管理平台
             </div>
         </div>
 		

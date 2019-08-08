@@ -18,8 +18,13 @@
             <h3>人事管理系统网站</h3>
 
         </div>
+<<<<<<< HEAD
         <div id="loginbox">            
             <form id="loginform" class="form-vertical" action="main.jsp" >
+=======
+        <div id="loginbox">            
+            <form id="loginform" class="form-vertical" action="main.jsp" />
+>>>>>>> refs/remotes/origin/master
 				<p>请在输入用户名和密码进行登录</p>
                 <div class="control-group">
                     <div class="controls">
