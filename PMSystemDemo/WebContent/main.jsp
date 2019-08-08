@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="btn btn-inverse">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <i class="icon icon-share-alt"></i>
                         <span class="text">注销</span>
                     </a>
@@ -45,55 +45,37 @@
         <div id="sidebar">
             <ul>
                 <li class="active">
-                    <a href="main.html">
+                    <a href="main.jsp">
                         <i class="icon icon-home"></i> 
                         <span>首页</span>
                     </a>
                 </li>
                 <li>
-                    <a href="empinfo.html">
+                    <a href="empinfo.jsp">
                         <i class="icon icon-tag"></i> 
                         <span>查看个人信息</span>
                     </a>
                 </li>
                 <li>
-                    <a href="changePassword.html">
+                    <a href="changePassword.jsp">
                         <i class="icon icon-ok-circle"></i> 
                         <span>修改登录密码</span>
                     </a>
                 </li>
-                <li class="submenu">
-                    <a href="#">
-                        <i class="icon icon-time"></i> 
-                        <span>休假管理</span> 
-                        <!--
-                        <span class="label">2</span>
-                        -->
-                    </a>
-                    <ul>
-                        <li><a href="#">申请休假</a></li>
-                        <li><a href="#">审批休假</a></li>
-                        <li><a href="#">查看休假记录</a></li>
-                        <li><a href="#">查看审批记录</a></li>
-                        <li><a href="#">休假记录统计</a></li>
-                        <li><a href="#">休假报表</a></li>
-                        <li><a href="vtypelist.html">假期类型管理</a></li>
-                    </ul>
-                </li>
                 <li>
-                    <a href="emplist.html">
+                    <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
                         <span>员工信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="deptlist.html">
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="joblist.html">
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -146,7 +128,7 @@
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
-                2016 &copy; 企业人事管理平台
+                2019 &copy; 企业人事管理平台
             </div>
         </div>
 		

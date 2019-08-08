@@ -26,7 +26,7 @@
         			validateInput(this);
         		});
         		$("form").submit(function (){
-        			var f = false;
+        			var f = true;
 
         			var a = $("form input"); 
         			
@@ -36,14 +36,6 @@
         			}
         			return f;
         		});
-        		$("#userid").bind("input", function (){
-        			var userid = $(this).val();
-        			if(userid == 1045){
-        				$("#span1").html("李建国");
-        			}else{
-        				$("#span1").html("员工姓名");
-        			}
-        		})
         	});
 
         	function validateInput(obj){
@@ -74,7 +66,7 @@
                     </a>
                 </li>
                 <li class="btn btn-inverse">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <i class="icon icon-share-alt"></i>
                         <span class="text">注销</span>
                     </a>
@@ -84,19 +76,19 @@
         <div id="sidebar">
             <ul>
                 <li>
-                    <a href="main.html">
+                    <a href="main.jsp">
                         <i class="icon icon-home"></i> 
                         <span>首页</span>
                     </a>
                 </li>
                 <li>
-                    <a href="empinfo.html">
+                    <a href="empinfo.jsp">
                         <i class="icon icon-tag"></i> 
                         <span>查看个人信息</span>
                     </a>
                 </li>
                 <li>
-                    <a href="changePassword.html">
+                    <a href="changePassword.jsp">
                         <i class="icon icon-ok-circle"></i> 
                         <span>修改登录密码</span>
                     </a>
@@ -116,23 +108,23 @@
                         <li><a href="#">查看审批记录</a></li>
                         <li><a href="#">休假记录统计</a></li>
                         <li><a href="#">休假报表</a></li>
-                        <li><a href="vtypelist.html">假期类型管理</a></li>
+                        <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="emplist.html">
+                    <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
                         <span>员工信息管理</span> 
                     </a>
                 </li>
-                <li class="active">
-                    <a href="deptlist.html">
+                <li>
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
-                <li>
-                    <a href="joblist.html">
+                <li class="active">
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -141,15 +133,15 @@
         </div>
 		<div id="content">
 			<div id="content-header">
-				<h1>新增部门</h1>
+				<h1>新增职位</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom">
+				<a href="main.jsp" class="tip-bottom">
                 	<i class="icon-home"></i>
                                                     首页
                 </a>
-				<a href="deptlist.html">部门列表</a>
-				<a href="#" class="current">新增部门</a>
+				<a href="joblist.jsp">职位列表</a>
+				<a href="#" class="current">新增职位</a>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
@@ -159,52 +151,81 @@
 									<span class="icon">
 										<i class="icon-align-justify"></i>									
 									</span>
-									<h5>部门信息</h5>
+									<h5>职位信息</h5>
 								</div>
 								<div class="widget-content nopadding">
-									<form id="eform" action="#" class="form-horizontal" method="post" />
+									<form id="eform" action="${pageContext.request.contextPath}/AddDeptServlet" class="form-horizontal" method="post" />
 	                                    <div id="info1" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	部门名称:
+	                                            	编号
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="text" name="dname" id="dname" value="" />
+	                                            <input type="number" name="id" id="id"/>                
 	                                        </div>
 	                                    </div>
 	                                    <div id="info2" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	负责人员工编号:
+	                                        	部门名称
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="text" name="userid" id="userid" value="" />
-	                                            <span id="span1"></span>
+	                                            <input type="text" name="dname" id="dname"  />
 	                                        </div>
 	                                    </div>
 	                                    <div id="info3" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	部门编制:
+	                                        	部门类型:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="number" name="dno" id="dno" value="" />
+	                                            <input type="text" name="type" id="type"  />
 	                                        </div>
 	                                    </div>
 	                                    <div id="info4" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
+	                                                                                                                                 部门电话:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="number" name="phone" id="phone"/>
+	                                        </div>
+	                                    </div>
+	                                    <div id="info4" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                                                                                                                 部门邮箱:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="text" name="email" id="email"/>
+	                                        </div>
+	                                    </div>
+	                                   
+	                                    <div id="info5" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
 	                                        	上级部门:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <select id="uplevel" name="uplevel">
+	                                            <select id="mgr" name="mgr">
 	                                            	<option value="-1">无上级部门</option>
 	                                            	<option value="100">研发中心</option>
 	                                            	<option value="102">研发二部</option>
 	                                            </select>
 	                                        </div>
 	                                    </div>
-	                                    <div class="form-actions">
+	                                    <div id="info6" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	日期:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="date" name="date" id="date"  />
+	                                            <input type="hidden" name="depict" id="depict" value="lxt">
+	                                        </div>
+	                                    </div>
+	                                    
+	                                    <div id="info7" class="form-actions">
 	                                        <input type="submit" value="提交" class="btn btn-primary" />
 	                                        <input type="reset" value="重置" class="btn btn-primary" />
 	                                    </div>
@@ -214,21 +235,12 @@
 						</div>
 				</div>	
 			</div>	
-
-            <div class="alert alert-error">
-                保存失败
-            </div>
-
-            <div class="alert alert-success">
-                保存成功
-            </div>
-
 			
 		</div>		
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
-                2016 &copy; 企业人事管理平台
+                2019 &copy; 企业人事管理平台
             </div>
         </div>
 		
