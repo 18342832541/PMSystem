@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<title>企业人事管理平台</title>
+		<title>Insert title here</title>
 		<meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,7 +39,7 @@
                     </a>
                 </li>
                 <li class="btn btn-inverse">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <i class="icon icon-share-alt"></i>
                         <span class="text">注销</span>
                     </a>
@@ -47,20 +49,20 @@
         <div id="sidebar">
             <ul>
                 <li>
-                    <a href="main.html">
+                    <a href="main.jsp">
                         <i class="icon icon-home"></i> 
                         <span>首页</span>
                     </a>
                 </li>
                 
                 <li>
-                    <a href="empinfo.html">
+                    <a href="empinfo.jsp">
                         <i class="icon icon-tag"></i> 
                         <span>查看个人信息</span>
                     </a>
                 </li>
                 <li>
-                    <a href="changePassword.html">
+                    <a href="changePassword.jsp">
                         <i class="icon icon-ok-circle"></i> 
                         <span>修改登录密码</span>
                     </a>
@@ -80,23 +82,23 @@
                         <li><a href="#">查看审批记录</a></li>
                         <li><a href="#">休假记录统计</a></li>
                         <li><a href="#">休假报表</a></li>
-                        <li><a href="vtypelist.html">假期类型管理</a></li>
+                        <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="emplist.html">
+                    <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
                         <span>员工信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="deptlist.html">
+                    <a href="deptlist.jsp">
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li class="active">
-                    <a href="joblist.html">
+                    <a href="joblist.jsp">
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -111,10 +113,10 @@
 				<h1>查看职位信息</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom">
+				<a href="main.jsp" class="tip-bottom">
                 	<i class="icon-home"></i>首页
                 </a>
-				<a href="joblist.html">职位列表</a>
+				<a href="joblist.jsp">职位列表</a>
 				<a href="#" class="current">查看职位</a>
 			</div>
         	<div class="container-fluid">

@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<title>企业人事管理平台</title>
+		<title>Insert title here</title>
 		<meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41,7 +43,7 @@
                     </a>
                 </li>
                 <li class="btn btn-inverse">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <i class="icon icon-share-alt"></i>
                         <span class="text">注销</span>
                     </a>
@@ -51,13 +53,13 @@
         <div id="sidebar">
             <ul>
                 <li>
-                    <a href="main.html">
+                    <a href="main.jsp">
                         <i class="icon icon-home"></i> 
                         <span>首页</span>
                     </a>
                 </li>
                 <li>
-                    <a href="empinfo.html">
+                    <a href="empinfo.jsp">
                         <i class="icon icon-tag"></i> 
                         <span>查看个人信息</span>
                     </a>
@@ -83,23 +85,23 @@
                         <li><a href="#">查看审批记录</a></li>
                         <li><a href="#">休假记录统计</a></li>
                         <li><a href="#">休假报表</a></li>
-                        <li><a href="vtypelist.html">假期类型管理</a></li>
+                        <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="emplist.html">
+                    <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
                         <span>员工信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="deptlist.html">
+                    <a href="deptlist.jsp">
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="joblist.html">
+                    <a href="joblist.jsp">
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -112,19 +114,19 @@
 				<h1>员工信息管理</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom">
+				<a href="main.jsp" class="tip-bottom">
                 	<i class="icon-home"></i>
                                                     首页
                 </a>
 				<a href="#" class="current">员工信息管理</a>
 			</div>
-			<form action="#" method="post" name="searchForm">
+			<form action="<%-- ${ pageContext.request.contextPath }/GetAllEmpServlet --%>" method="post" name="searchForm">
 			<input type="hidden" name="pagenum" id="pagenum"/>
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="control-group">
 						<span class="span3">
-							姓名：<input id="ename" name="ename" type="text" style="width:65%"/>
+							姓名：<input id="name" name="name" type="text" style="width:65%"/>
 						</span>
 						<span class="span3">
 							性别：<select id="sex" name="sex" style="width:70%">
@@ -152,7 +154,7 @@
 
 						<span class="span6">
 							入职日期：
-							<input readonly id="sdate" name="sdate" type="text" data-date-format="yyyy-mm-dd" class="datepicker"/> - 
+							<input readonly id="sdate" name="sdate" type="text" data-date-format="yyyy-mm-dd" class="datepicker"/>  
 							<input readonly id="edate" name="edate" type="text" data-date-format="yyyy-mm-dd" class="datepicker"/>
                         </span>   
 						<span class="span3">
@@ -167,7 +169,7 @@
 								<i class="icon-white icon-search"></i>
 								查询
 							</button>
-							<button type="button" class="btn btn-info" onclick="resetForm();">
+							<button type="button" class="btn btn-info" onclick="resetForm()">
 								<i class="icon-white icon-repeat"></i>
 								重置
 							</button>
@@ -185,94 +187,72 @@
 					</button>
 					<script type="text/javascript">
 						function addemp(){
-							location.href="addEmp.html";
+							
+							location.href="${ pageContext.request.contextPath }/addEmp.jsp";
 						}
 					</script>
 				</div>
+				
 				<div class="span12">
 					<div class="widget-box">
 						<div class="widget-content nopadding">
 							<table class="table table-bordered table-striped">
 								<thead>
 									<tr>
-										<th>编号</th>
+										<th>员工号</th>
 										<th>姓名</th>
 										<th>性别</th>
 										<th>职位</th>
 										<th>部门</th>
-										<th>状态</th>
+										
 										<th>操作</th>
 									</tr>
 								</thead>
 								<tbody>
-                                    <tr>
-                                        <td>1001</td>
-                                        <td>张三</td>
-                                        <td>男</td>
-                                        <td>高级软件工程师</td>
-                                        <td>研发一部</td>
-                                        <td>在职</td>
+								
+								<c:forEach items="${empls }" var="empl" varStatus="sta">
+									<tr>             
+                                       <td>${empl.employeeId}</td>
+                                        <td>${empl.name }</td>
+                                        <td>${empl.sex }</td>
+                                        <td>${empl.job }</td>
+                                        <td>${empl.dept }</td>
+                                      
                                         <td>
-                                            <button class="btn btn-info" onclick="allmessage()">
+                                            <button class="btn btn-info" onclick="allmessage${sta.count}()">
                                                 <i class="icon-white icon-eye-open"></i>
                                                 查看
                                             </button>
-                                            <button class="btn btn-warning" onclick="gotomodify()">
+                                            <button class="btn btn-warning" onclick="gotomodify${sta.count}()">
                                                 <i class="icon-white icon-refresh"></i>
                                                 修改
                                             </button>
-                                            
-                                            <script type="text/javascript">
-											  function allmessage(){
-                                                   location.href="viewempinfo.html";
-                                               }
-                                              function gotomodify(){
-                                                  location.href="modifyEmp.html";
-                                              }
-											  function gotoChange(){
-                                                  location.href = "changeEmp.html";
-                                              }
-                                            </script>
-                                            <button class="btn btn-danger" onclick="lizhi()">
+                                            <button class="btn btn-danger" onclick="lizhi${sta.count}()">
                                                 <i class="icon-white icon-minus"></i>
                                                 离职
                                             </button>
-                                            <button class="btn btn-success" onclick="gotoChange()">
+                                            <button class="btn btn-success" onclick="gotoChange${sta.count}()">
                                                 <i class="icon-white icon-share"></i>
                                                 调转
                                             </button>
+                                            
                                             <script type="text/javascript">
-                                              
-                                            </script>
+											  function allmessage${sta.count}(){
+                                                   location.href="viewEmpInfo.jsp";
+                                               }
+                                              function gotomodify${sta.count}(){
+                                                  location.href="modifyEmp.jsp";
+                                              }
+											  function gotoChange${sta.count}(){
+                                                  location.href = "changeEmp.jsp";
+                                              }
+											  function lizhi${sta.count}(){
+                                                  location.href = "deletEmp.jsp";
+                                              }
+                                            </script>                                          
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>1002</td>
-                                        <td>李四</td>
-                                        <td>男</td>
-                                        <td>软件工程师</td>
-                                        <td>研发二部</td>
-                                        <td>离职</td>
-                                        <td>
-                                            <button class="btn btn-info" onclick="allmessage()">
-                                                <i class="icon-white icon-eye-open"></i>
-                                                查看
-                                            </button>
-                                            <button class="btn btn-warning" onclick="gotomodify()">
-                                                <i class="icon-white icon-refresh"></i>
-                                                修改
-                                            </button>
-                                            <button class="btn btn-info" onclick="lizhi()">
-                                                <i class="icon-white icon-plus"></i>
-                                                入职
-                                            </button>
-                                              
-                                            <button class="btn btn-success" onclick="gotoChange()">
-                                                <i class="icon-white icon-share"></i>
-                                                调转
-                                            </button> 
-                                        </td>
-                                    </tr>
+								</c:forEach>
 								</tbody>
 							</table>							
 						</div>

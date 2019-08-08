@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<title>企业人事管理平台</title>
-		<meta charset="UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+		
+		
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -22,6 +26,7 @@
         <script src="js/unicorn.js"></script>
         <script src="js/addemp.js"></script>	            
 	</head>	
+	
 	<body>
 		<div id="header"><h1></h1></div>
 		
@@ -36,7 +41,7 @@
                     </a>
                 </li>
                 <li class="btn btn-inverse">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <i class="icon icon-share-alt"></i>
                         <span class="text">注销</span>
                     </a>
@@ -46,19 +51,19 @@
         <div id="sidebar">
             <ul>
                 <li>
-                    <a href="main.html">
+                    <a href="main.jsp">
                         <i class="icon icon-home"></i> 
                         <span>首页</span>
                     </a>
                 </li>
                 <li>
-                    <a href="empinfo.html">
+                    <a href="empinfo.jsp">
                         <i class="icon icon-tag"></i> 
                         <span>查看个人信息</span>
                     </a>
                 </li>
                 <li>
-                    <a href="changePassword.html">
+                    <a href="changePassword.jsp">
                         <i class="icon icon-ok-circle"></i> 
                         <span>修改登录密码</span>
                     </a>
@@ -78,23 +83,23 @@
                         <li><a href="#">查看审批记录</a></li>
                         <li><a href="#">休假记录统计</a></li>
                         <li><a href="#">休假报表</a></li>
-                        <li><a href="vtypelist.html">假期类型管理</a></li>
+                        <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="emplist.html">
+                    <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
                         <span>员工信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="deptlist.html">
+                    <a href="deptlist.jsp">
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="joblist.html">
+                    <a href="joblist.jsp">
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -106,13 +111,14 @@
 				<h1>新增员工</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom">
+				<a href="main.jsp" class="tip-bottom">
                 	<i class="icon-home"></i>
                                                     首页
                 </a>
-				<a href="emplist.html">员工列表</a>
+				<a href="emplist.jsp">员工列表</a>
 				<a href="#" class="current">新增员工</a>
 			</div>
+			
 			<div class="container-fluid">
 				<div class="row-fluid">
 						<div class="span12">
@@ -123,18 +129,30 @@
 									</span>
 									<h5>员工信息</h5>
 								</div>
+								
 								<div class="widget-content nopadding">
-									<form id="eform" action="servlet/admin/HandleAddEmpServlet" class="form-horizontal" method="post" />
+									<form id="eform" action="${ pageContext.request.contextPath }/InsertEmplServlet" class="form-horizontal" method="post" />
+	                   
+	                                    <div id="info" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	员工号:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="text" name="id" id="id" />
+	                                        </div>
+	                                    </div>
+	                                   
 	                                    <div id="info1" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
 	                                        	员工姓名:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="text" name="ename" id="ename" />
+	                                            <input type="text" name="name" id="name" />
 	                                        </div>
 	                                    </div>
-	                                    <div id="info2" class="control-group">
+	                                <!--     <div id="info2" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
 	                                        	登录名:
@@ -151,7 +169,7 @@
 	                                        <div class="controls">
 	                                            <input type="password" name="lpass" id="lpass" />
 	                                        </div>
-	                                    </div>
+	                                    </div> -->
 	                                    <div id="info4" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
@@ -166,7 +184,7 @@
 	                                        </div>
 	                                    </div>
 	                                    <div id="info5" class="control-group">
-	                                        <label class="control-label">
+	                                        <label class="control-label"> 
 	                                        	<span style="color: red">*</span>
 	                                        	生日:
 	                                        </label>
@@ -174,6 +192,17 @@
 	                                            <input type="text" name="birthday" id="birthday" data-date-format="yyyy-mm-dd" readonly class="datepicker"/>
 	                                        </div>
 	                                    </div>
+	                                    
+	                                    <div id="info7" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	身份证号:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="text" name="shenf" id="shenf" />
+	                                        </div>
+	                                    </div>
+	                                    
 	                                    <div id="info6" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
@@ -189,10 +218,10 @@
 	                                        	月薪:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="text" name="salary" id="salary" />
+	                                            <input type="text" name="sal" id="sal" />
 	                                        </div>
 	                                    </div>
-	                                    <div id="info8" class="control-group">
+	                                   <!--  <div id="info8" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
 	                                        	权限:
@@ -204,7 +233,7 @@
 	                                            	<option value="99">管理员</option>
 	                                            </select>
 	                                        </div>
-	                                    </div>
+	                                    </div> -->
 	                                    <div id="info9" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
@@ -231,7 +260,7 @@
 	                                            </select>
 	                                        </div>
 	                                    </div>
-                                        <div id="info11" class="control-group">
+                                        <!-- <div id="info11" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
 	                                        	照片:
@@ -239,7 +268,7 @@
 	                                        <div class="controls">
 	                                            <input type="file" name="headimg" id="headimg" />
 	                                        </div>
-	                                    </div>
+	                                    </div> -->
 	                                    <div class="form-actions">
 	                                        <input type="submit" value="提交" class="btn btn-primary" />
 	                                        <input type="reset" value="重置" class="btn btn-primary" />
