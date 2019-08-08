@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <title>人事管理网站</title>
+        <title>Insert title here</title>
 		<meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -12,7 +14,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body>
         <div id="logo" style="text-align:center;color:#fff;">
+
             <h3>人事管理系统网站</h3>
+
         </div>
         <div id="loginbox">            
             <form id="loginform" class="form-vertical" action="main.jsp" >
@@ -21,7 +25,7 @@
                     <div class="controls">
                         <div class="input-prepend">
                             <span class="add-on" title="用户名"><i class="icon-user"></i></span>
-                            <input type="text" placeholder="请输入用户名" />
+                            <input type="text" placeholder="请输入用户名" name="username"/>
                         </div>
                     </div>
                 </div>
@@ -29,7 +33,7 @@
                     <div class="controls">
                         <div class="input-prepend">
                             <span class="add-on" title="密码"><i class="icon-lock"></i></span>
-                            <input type="password" placeholder="请输入密码" />
+                            <input type="password" placeholder="请输入密码" name="userpassword"/>
                         </div>
                     </div>
                 </div>

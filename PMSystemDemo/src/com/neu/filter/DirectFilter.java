@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class DirectFilter
  */
-@WebFilter("/*")
+@WebFilter()
 public class DirectFilter implements Filter {
 
     /**
@@ -39,6 +39,7 @@ public class DirectFilter implements Filter {
 		String uri = ((HttpServletRequest)request).getRequestURI();
 		
 		HttpServletRequest request2 = (HttpServletRequest)request;		
+		String etips = "你不登录，不让你访问内部！请你先登录，谢谢！";
 		//排除不拦截的资源
 		if(uri.equals(request2.getContextPath()+"/login.jsp")) {
 			//放行
