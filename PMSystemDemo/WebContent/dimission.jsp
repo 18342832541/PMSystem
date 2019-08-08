@@ -131,8 +131,7 @@
 	                                        	离职原因:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <textarea name="reason" id="reason" ></textarea>
-	                                        </div>
+	                                            <input type="text" name="reason" id="reason" />	                                        </div>
 	                                         <div class="form-actions">
 	                                        <input type="submit" value="提交" class="btn btn-primary" />
 	                                        <input type="reset" value="重置" class="btn btn-primary" />

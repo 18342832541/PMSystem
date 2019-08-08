@@ -12,10 +12,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body>
         <div id="logo" style="text-align:center;color:#fff;">
-            <h3>人事管理系统网站<h3>
+            <h3>人事管理系统网站</h3>
         </div>
         <div id="loginbox">            
-            <form id="loginform" class="form-vertical" action="main.html" />
+            <form id="loginform" class="form-vertical" action="main.jsp" >
 				<p>请在输入用户名和密码进行登录</p>
                 <div class="control-group">
                     <div class="controls">
@@ -38,7 +38,7 @@
                     <span class="pull-right"><input type="submit" class="btn btn-inverse" value="登录" /></span>
                 </div>
             </form>
-            <form id="recoverform" action="#" class="form-vertical" />
+            <form id="recoverform" action="#" class="form-vertical" >
 				<p align="left">请填写您的公司邮箱地址,我们会将新的随机密码发送给您的邮箱。</p>
 				<div class="control-group">
                     <div class="controls">

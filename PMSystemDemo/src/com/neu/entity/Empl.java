@@ -31,7 +31,7 @@ public class Empl {
 	  private String major;
 	  private String graduationDate;
 	public Empl() {
-		super();
+		super(); 
 		// TODO Auto-generated constructor stub
 	}
 	public Empl(Integer employeeId, String name, String gender, Date birthDate, String idNumber,

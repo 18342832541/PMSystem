@@ -98,6 +98,19 @@
                         <span>职位信息管理</span> 
                     </a>
                 </li>
+                <li class="submenu">
+                    <a href="#">
+                        <i class="icon icon-briefcase"></i> 
+                        <span>报表信息管理</span> 
+                    </a>
+                    <ul>
+                        <li><a href="LogsServlet?logsInfo=inEmp">新聘员工报表</a></li>
+                        <li><a href="LogsServlet?logsInfo=outEmp">离职员工报表</a></li>
+                        <li><a href="LogsServlet?logsInfo=deptTrans">部门调动员工报表</a></li>
+                        <li><a href="LogsServlet?logsInfo=postTrans">岗位调动员工报表</a></li>
+                        <li><a href="LogsServlet?logsInfo=Personnel">人事月报</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         
@@ -152,4 +165,3 @@
 		
 	</body>
 </html>
-
