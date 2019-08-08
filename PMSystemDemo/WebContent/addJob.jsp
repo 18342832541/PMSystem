@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="btn btn-inverse">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <i class="icon icon-share-alt"></i>
                         <span class="text">注销</span>
                     </a>
@@ -76,19 +76,19 @@
         <div id="sidebar">
             <ul>
                 <li>
-                    <a href="main.html">
+                    <a href="main.jsp">
                         <i class="icon icon-home"></i> 
                         <span>首页</span>
                     </a>
                 </li>
                 <li>
-                    <a href="empinfo.html">
+                    <a href="empinfo.jsp">
                         <i class="icon icon-tag"></i> 
                         <span>查看个人信息</span>
                     </a>
                 </li>
                 <li>
-                    <a href="changePassword.html">
+                    <a href="changePassword.jsp">
                         <i class="icon icon-ok-circle"></i> 
                         <span>修改登录密码</span>
                     </a>
@@ -108,23 +108,23 @@
                         <li><a href="#">查看审批记录</a></li>
                         <li><a href="#">休假记录统计</a></li>
                         <li><a href="#">休假报表</a></li>
-                        <li><a href="vtypelist.html">假期类型管理</a></li>
+                        <li><a href="vtypelist.jsp">假期类型管理</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="emplist.html">
+                    <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
                         <span>员工信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="deptlist.html">
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li class="active">
-                    <a href="joblist.html">
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -136,11 +136,11 @@
 				<h1>新增职位</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom">
+				<a href="main.jsp" class="tip-bottom">
                 	<i class="icon-home"></i>
                                                     首页
                 </a>
-				<a href="joblist.html">职位列表</a>
+				<a href="joblist.jsp">职位列表</a>
 				<a href="#" class="current">新增职位</a>
 			</div>
 			<div class="container-fluid">
@@ -154,23 +154,41 @@
 									<h5>职位信息</h5>
 								</div>
 								<div class="widget-content nopadding">
-									<form id="eform" action="#" class="form-horizontal" method="post" />
+									<form id="eform" action="${pageContext.request.contextPath}/AddJobServlet" class="form-horizontal" method="post" />
 	                                    <div id="info1" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	职位名称:
+	                                        	职位编号:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="text" name="jname" id="jname" />
+	                                            <input type="text" name="id" id="id" />
 	                                        </div>
 	                                    </div>
 	                                    <div id="info2" class="control-group">
 	                                        <label class="control-label">
 	                                        	<span style="color: red">*</span>
-	                                        	职位级别:
+	                                        	名称:
 	                                        </label>
 	                                        <div class="controls">
-	                                            <input type="number" name="jlevel" id="jlevel"/>
+	                                            <input type="text" name="ename" id="ename"/>
+	                                        </div>
+	                                    </div>
+	                                    <div id="info3" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	岗位类型:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="text" name="postType" id="postType" />
+	                                        </div>
+	                                    </div>
+	                                    <div id="info4" class="control-group">
+	                                        <label class="control-label">
+	                                        	<span style="color: red">*</span>
+	                                        	岗位编制:
+	                                        </label>
+	                                        <div class="controls">
+	                                            <input type="text" name="postAllot" id="postAllot" />
 	                                        </div>
 	                                    </div>
 	                                    <div class="form-actions">
@@ -183,21 +201,12 @@
 						</div>
 				</div>	
 			</div>	
-
-            <div class="alert alert-error">
-                保存失败
-            </div>
-
-            <div class="alert alert-success">
-                保存成功
-            </div>
-
 			
 		</div>		
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
-                2016 &copy; 企业人事管理平台
+                2019 &copy; 企业人事管理平台
             </div>
         </div>
 		

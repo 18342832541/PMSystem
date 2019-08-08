@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,6 +27,7 @@
 				$('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 				$('.datepicker').datepicker();
 			});
+			
 		</script>
 	</head>	
 	<body>
@@ -41,7 +43,7 @@
                     </a>
                 </li>
                 <li class="btn btn-inverse">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <i class="icon icon-share-alt"></i>
                         <span class="text">注销</span>
                     </a>
@@ -51,55 +53,37 @@
         <div id="sidebar">
             <ul>
                 <li>
-                    <a href="main.html">
+                    <a href="main.jsp">
                         <i class="icon icon-home"></i> 
                         <span>首页</span>
                     </a>
                 </li>
                 <li>
-                    <a href="empinfo.html">
+                    <a href="empinfo.jsp">
                         <i class="icon icon-tag"></i> 
                         <span>查看个人信息</span>
                     </a>
                 </li>
                 <li>
-                    <a href="changePassword.html">
+                    <a href="changePassword.jsp">
                         <i class="icon icon-ok-circle"></i> 
                         <span>修改登录密码</span>
                     </a>
                 </li>
-                <li class="submenu">
-                    <a href="#">
-                        <i class="icon icon-time"></i> 
-                        <span>休假管理</span> 
-                        <!--
-                        <span class="label">2</span>
-                        -->
-                    </a>
-                    <ul>
-                        <li><a href="#">申请休假</a></li>
-                        <li><a href="#">审批休假</a></li>
-                        <li><a href="#">查看休假记录</a></li>
-                        <li><a href="#">查看审批记录</a></li>
-                        <li><a href="#">休假记录统计</a></li>
-                        <li><a href="#">休假报表</a></li>
-                        <li><a href="vtypelist.html">假期类型管理</a></li>
-                    </ul>
-                </li>
                 <li>
-                    <a href="emplist.html">
+                    <a href="emplist.jsp">
                         <i class="icon icon-user"></i> 
                         <span>员工信息管理</span> 
                     </a>
                 </li>
                 <li>
-                    <a href="deptlist.html">
+                    <a href="${pageContext.request.contextPath }/GetAllDeptServlet">
                         <i class="icon icon-flag"></i> 
                         <span>部门信息管理</span> 
                     </a>
                 </li>
                 <li class="active">
-                    <a href="joblist.html">
+                    <a href="${pageContext.request.contextPath }/GetAllJobServlet">
                         <i class="icon icon-briefcase"></i> 
                         <span>职位信息管理</span> 
                     </a>
@@ -112,41 +96,28 @@
 				<h1>职位信息管理</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom">
+				<a href="main.jsp" class="tip-bottom">
                 	<i class="icon-home"></i>
                                                     首页
                 </a>
-				<a href="#" class="current">职位信息管理</a>
+				<a href="${pageContext.request.contextPath }/GetAllJobServlet" class="current">职位信息管理</a>
 			</div>
-			<form action="#" method="post" name="searchForm">
-			<input type="hidden" name="pagenum" id="pagenum"/>
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="control-group">
 						<span class="span3">
-							名称：<input id="ename" name="ename" type="text" style="width:65%"/>
-						</span>
-						<span class="span3">
-							状态：<select id="eflag" name="eflag" style="width:70%">
-									<option value="-1">=请选择=</option>
-									<option value="1">活动</option>
-                                    <option value="2">撤销</option>
-								</select>
+							编号：<input id="btnId" name="id" type="number" style="width:65%"/>
 						</span>
                         <span class="span3">
-							<button class="btn btn-info" onclick="submitForm(1);">
+							<button class="btn btn-info" onclick="selectById()">
 								<i class="icon-white icon-search"></i>
 								查询
 							</button>
-							<button type="button" class="btn btn-info" onclick="resetForm();">
-								<i class="icon-white icon-repeat"></i>
-								重置
-							</button>
+							<input type="reset" name="button" id="button" value="重置" />
 						</span>
 					</div>
 				</div>
 			</div>
-			</form>
 			<hr/>
 			<div class="row-fluid">
 				<div class="span12" style="padding-left:30px;">
@@ -154,103 +125,109 @@
 						<i class="icon-white icon-plus"></i>
 						新增
 					</button>
-					<script type="text/javascript">
-						function addJob(){
-							location.href="addJob.html";
-						}
-					</script>
 				</div>
 				<div class="span12">
 					<div class="widget-box">
 						<div class="widget-content nopadding">
 							<table class="table table-bordered table-striped">
-								<thead>
 									<tr>
 										<th>编号</th>
-										<th>职位名称</th>
-										<th>职位级别</th>
-										<th>状态</th>
+										<th>名称</th>
+										<th>岗位类型</th>
+										<th>岗位编制</th>
 										<th>操作</th>
 									</tr>
-								</thead>
-								<tbody>
-                                    <tr>
-                                        <td>6001</td>
-                                        <td>高级软件工程师</td>
-                                        <td>12</td>
-                                        <td>活动</td>
-                                        <td>
-                                            <button class="btn btn-info" onclick="allmessage()">
-                                                <i class="icon-white icon-eye-open"></i>
-                                                查看
-                                            </button>
-                                            <button class="btn btn-warning" onclick="gotomodify()">
-                                                <i class="icon-white icon-refresh"></i>
-                                                修改
-                                            </button>
-                                            
-                                            <script type="text/javascript">
-											  function allmessage(){
-                                                   location.href="viewjobinfo.html";
-                                               }
-                                              function gotomodify(){
-                                                  location.href="modifyJob.html";
-                                              }
-
-                                            </script>
-                                            <button class="btn btn-danger">
-                                                <i class="icon-white icon-minus"></i>
-                                                撤销
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6002</td>
-                                        <td>软件工程师</td>
-                                        <td>9</td>
-                                        <td>撤销</td>
-                                        <td>
-                                            <button class="btn btn-info" onclick="allmessage()">
-                                                <i class="icon-white icon-eye-open"></i>
-                                                查看
-                                            </button>
-                                            <button class="btn btn-warning" onclick="gotomodify()">
-                                                <i class="icon-white icon-refresh"></i>
-                                                修改
-                                            </button>
-                                            <button class="btn btn-info">
-                                                <i class="icon-white icon-plus"></i>
-                                                恢复
-                                            </button>
-                                        </td>
-                                    </tr>
-								</tbody>
+                                   
+              <c:forEach items="${list}" var="job" varStatus="vs">
+              <tr>
+	              <td>${job.id}</td>
+	              <td>${job.ename }</td>
+	              <td>${job.postType }</td>
+	              <td>${job.postAllot}</td>
+	              <td>
+	                                            <button class="btn btn-info" onclick="allmessage${vs.index}()">
+	                                                <i class="icon-white icon-eye-open"></i>
+	                                                查看
+	                                            </button>
+	                                            <button class="btn btn-warning" onclick="gotomodify${vs.index}()">
+	                                                <i class="icon-white icon-refresh"></i>
+	                                                修改
+	                                            </button>
+	                                            <button class="btn btn-danger" onclick="delJob${vs.index}()">
+	                                                <i class="icon-white icon-minus"></i>
+	                                                删除
+	                                            </button>
+	                                            <script type="text/javascript">
+	
+		                                            	function allmessage${vs.index}(){
+			                                                location.href="${pageContext.request.contextPath}/GetByIdServlet?id=${job.id}";
+			                                            }
+			                                           function gotomodify${vs.index}(){
+			                                               location.href="${pageContext.request.contextPath}/UpdateJobServlet?id=${job.id}";
+			                                           }
+			                                           function delJob${vs.index}(){
+			                                         	if( confirm("确定删除吗")){
+			                                         		
+			                                         	 location.href="${pageContext.request.contextPath}/DelJobServlet?id=${job.id}";	
+			                                         		
+			                                         	};
+			                                           }
+			                                           
+	                                            </script>
+					</td>
+				</tr>	
+              </c:forEach>                                                              
+  <tr>
+  <td colspan="5">
+  <c:if test="${pageNum==1 }">
+     首页 上一页
+  </c:if>
+  <c:if test="${pageNum>1 }">
+<a href="${ pageContext.request.contextPath }/GetAllJobServlet?pageNum=1">[首页]</a>
+  <a href="${ pageContext.request.contextPath }/GetAllJobServlet?pageNum=${ pageNum-1 }">[上一页]</a>
+  </c:if>
+ 
+   <c:forEach begin="1" end="${ page }" var="pageNum1">
+    <c:if test="${pageNum1==pageNum }">
+      [${pageNum1 }]
+   </c:if>
+    <c:if test="${pageNum1!=pageNum }">
+      <a href="${ pageContext.request.contextPath }/GetAllJobServlet?pageNum=${ pageNum1 }">[${ pageNum1 }]</a>
+   </c:if>				
+   </c:forEach>
+   <c:if test="${pageNum==page }">
+      下一页   末页
+   </c:if>
+   <c:if test="${pageNum<page }">
+   <a href="${ pageContext.request.contextPath }/GetAllJobServlet?pageNum=${ pageNum+1 }">下一页</a>
+   <a href="${ pageContext.request.contextPath }/GetAllJobServlet?pageNum=${ page}">末页</a> 
+   </c:if>
+  </td>
+ </tr>                                                 
 							</table>							
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
-				<div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-			<a tabindex="0" href="javascript:"+method+"(1)" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
-			<a tabindex="0" href="#" class="previous fg-button ui-button ui-state-default">上一页</a>
-            <a tabindex="0" href="#" class="fg-button ui-button ui-state-default">1</a>
-            <a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">2
-            </a>
-            <a tabindex="0" href="#" class="fg-button ui-button ui-state-default">3</a>
-            <a tabindex="0" href="#" class="previous fg-button ui-button ui-state-default">下一页</a>
-			<a tabindex="0" href="#" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
-			
+			<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix"> 	 
 			</div>
-			</div>
-		</div>		
+			</div>		
         <div class="row-fluid">&nbsp;</div>
         <div class="row-fluid">
             <div id="footer" class="span12">
-                2016 &copy; 企业人事管理平台
+                2019 &copy; 企业人事管理平台
             </div>
         </div>
 		
 	</body>
+	<script type="text/javascript">
+	function addJob(){
+		location.href="${pageContext.request.contextPath}/addJob.jsp";
+	}
+	function selectById(){
+ 	   location = "${pageContext.request.contextPath}/GetByIdServlet?id="+$("#btnId").val();
+    }
+	}
+    </script>
 </html>
 
