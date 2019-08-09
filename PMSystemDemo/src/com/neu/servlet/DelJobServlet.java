@@ -6,8 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.neu.service.JobDao;
-import com.neu.service.JobDaoImplService;
+import com.neu.service.JobService;
+import com.neu.service.JobServiceImpl;
 
 
 @WebServlet("/DelJobServlet")
@@ -22,12 +22,11 @@ public class DelJobServlet extends HttpServlet {
 		 response.setCharacterEncoding("utf-8");
 		int id =Integer.parseInt( request.getParameter("id"));
 		  request.setAttribute("id", id);
-		JobDao jobDao = new JobDaoImplService();
+		JobService jobDao = new JobServiceImpl();
 		       try {
 				int n = jobDao.delete(id);
 			if(n==1) {	
-			request.getRequestDispatcher("/DelJob.jsp").forward(request, response);
-			 	
+			response.sendRedirect(request.getContextPath()+"/GetAllJobServlet");			 	
 				
 			}
 				

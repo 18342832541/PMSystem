@@ -14,32 +14,23 @@ import com.neu.dao.EmplDaoImpl;
 import com.neu.entity.Empl;
 
 /**
- * Servlet implementation class GetDelServlet
+ * Servlet implementation class GetEmpLikeNameServlet
  */
-@WebServlet("/GetDelServlet")
-public class GetDelServlet extends HttpServlet {
+@WebServlet("/GetEmpLikeNameServlet")
+public class GetEmpLikeNameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GetDelServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-EmplDao emplDao = new EmplDaoImpl();
+		request.setCharacterEncoding("utf-8");
+		String name = request.getParameter("name");
+		EmplDao emplDao = new EmplDaoImpl();
 		
 		try {
-			List<Empl> empls = emplDao.getAll();
+			List<Empl> empls = emplDao.getLikeName(name);
 			
 			request.setAttribute("empls", empls);
 			
-			request.getRequestDispatcher("/").forward(request, response);
+			request.getRequestDispatcher("/emplist.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

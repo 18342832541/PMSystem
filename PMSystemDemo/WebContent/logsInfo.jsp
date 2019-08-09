@@ -105,36 +105,26 @@
 	</div>
 	<div id="sidebar">
 		<ul>
-			<li><a href="main.html"> <i class="icon icon-home"></i> <span>首页</span>
+			<li><a href="main.jsp"> <i
+					class="icon icon-home"></i> <span>首页</span>
 			</a></li>
-			<li><a href="empinfo.html"> <i class="icon icon-tag"></i> <span>查看个人信息</span>
+			<li><a href="changePassword.jsp"> <i
+					class="icon icon-ok-circle"></i> <span>修改登录密码</span>
 			</a></li>
-			<li><a href="changePassword.html"> <i class="icon icon-ok-circle"></i> <span>修改登录密码</span>
+			<li><a
+				href="${pageContext.request.contextPath }/GetAllEmpsServle"> <i
+					class="icon icon-user"></i> <span>员工信息管理</span>
 			</a></li>
-			<li class="submenu"><a href="#"> <i class="icon icon-time"></i>
-					<span>休假管理</span> <!--
-                        <span class="label">2</span>
-                        -->
-			</a>
-				<ul>
-					<li><a href="#">申请休假</a></li>
-					<li><a href="#">审批休假</a></li>
-					<li><a href="#">查看休假记录</a></li>
-					<li><a href="#">查看审批记录</a></li>
-					<li><a href="#">休假记录统计</a></li>
-					<li><a href="#">休假报表</a></li>
-					<li><a href="vtypelist.html">假期类型管理</a></li>
-				</ul></li>
-			<li><a href="emplist.html"> <i class="icon icon-user"></i> <span>员工信息管理</span>
+			<li><a
+				href="${pageContext.request.contextPath }/GetAllDeptServlet"> <i
+					class="icon icon-flag"></i> <span>部门信息管理</span>
 			</a></li>
-			<li><a href="deptlist.html"> <i class="icon icon-flag"></i>
-					<span>部门信息管理</span>
+			<li><a
+				href="${pageContext.request.contextPath }/GetAllJobServlet"> <i
+					class="icon icon-briefcase"></i> <span>职位信息管理</span>
 			</a></li>
-			<li><a href="joblist.html"> <i class="icon icon-briefcase"></i>
-					<span>职位信息管理</span>
-			</a></li>
-			<li class="submenu active"><a href="#"> <i
-					class="icon icon-briefcase"></i> <span>报表信息管理</span>
+			<li class="submenu active"><a href="#"> <i class="icon icon-time"></i>
+					<span>报表信息管理</span>
 			</a>
 				<ul>
 					<li><a href="LogsServlet?logsInfo=inEmp">新聘员工报表</a></li>
@@ -149,14 +139,14 @@
 
 	<c:choose>
 		<c:when test="${ show eq 'inEmp' }">
-	<div id="content" decr="第一个模块，信息遍历输出">
-		<div id="content-header">
-			<h1>报表信息管理</h1>
-		</div>
-		<div id="breadcrumb">
-			<a href="main.html" class="tip-bottom"> <i class="icon-home"></i>首页
-			</a> <span class="current">报表信息管理</span>
-		</div>
+			<div id="content" decr="第一个模块，信息遍历输出">
+				<div id="content-header">
+					<h1>报表信息管理</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="main.jsp" class="tip-bottom"> <i class="icon-home"></i>首页
+					</a> <span class="current">报表信息管理</span>
+				</div>
 				<div class="container-fluid">
 					<div class="row-fluid">
 						<div class="span12">
@@ -166,39 +156,41 @@
 									</span>
 									<!-- 此处也需要做相应变换 -->
 									<h5>
-										<a href="${pageContext.request.contextPath }/LogsServlet?logsInfo=inEmp">新聘员工报表</a>
+										<a
+											href="${pageContext.request.contextPath }/LogsServlet?logsInfo=inEmp">新聘员工报表</a>
 									</h5>
 								</div>
 							</div>
 						</div>
 					</div>
-					<form action="${pageContext.request.contextPath }/LogsServlet?logsInfo=inEmp" method="post" onsubmit="return checkForm()">							
+					<form
+						action="${pageContext.request.contextPath }/LogsServlet?logsInfo=inEmp"
+						method="post" onsubmit="return checkForm()">
 						<div class="span12">
 							<div class="widget-box">
 								<div class="widget-title">
-									<span class="current">选择查询开始日期：</span>
-									<input type="date" name="startDate" id="startDate" />
-									<span class="current">选择查询截止日期：</span>
-									<input type="date" name="endDate" id="endDate"/>
-									<input type="submit" value="开始查询" >
+									<span class="current">选择查询开始日期：</span> <input type="date"
+										name="startDate" id="startDate" /> <span class="current">选择查询截止日期：</span>
+									<input type="date" name="endDate" id="endDate" /> <input
+										type="submit" value="开始查询">
 								</div>
 							</div>
 						</div>
 					</form>
 					<script>
-						function checkForm(){
-							if(document.getElementById("startDate").value ==""){
+						function checkForm() {
+							if (document.getElementById("startDate").value == "") {
 								alert("未选择开始日期！");
 								return false;
 							}
-							if(document.getElementById("endDate").value ==""){
+							if (document.getElementById("endDate").value == "") {
 								alert("未选择截止日期！")
 								return false;
 							}
 							return true;
 						}
 					</script>
-					
+
 				</div>
 
 				<hr />
@@ -237,533 +229,595 @@
 						</div>
 					</div>
 				</div>
-	</div>
-                        
-	<div decr="第二个模块，分页数据组"
-		class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
-		<div
-			class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-			<c:choose>
-				<c:when test="${ pageNum!=1 }">
-					<a tabindex="0" href="LogsServlet?logsInfo=inEmp&page=1&startDate=${ startDate }&endDate=${endDate}" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
-					<a tabindex="0" href="LogsServlet?logsInfo=inEmp&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">上一页</a>
-				</c:when>
-			</c:choose>
-		
-			<c:forEach begin="1" end="${ pageSum }" var="page">
-				<c:if test="${ pageNum==page }">
-					<a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a> 
-				</c:if>
-				<c:if test="${ pageNum!=page }">
-					<a tabindex="0" href="LogsServlet?logsInfo=inEmp&page=${ page }&startDate=${ startDate }&endDate=${endDate}" class="fg-button ui-button ui-state-default">${ page }</a>
-				</c:if>
-			</c:forEach>
-			
-			<c:choose>
-				<c:when test="${ pageNum!=pageSum }">
-					<a tabindex="0" href="LogsServlet?logsInfo=inEmp&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">下一页</a>
-					<a tabindex="0" href="LogsServlet?logsInfo=inEmp&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
-				</c:when>
-			</c:choose>
-		</div>
-	</div>
-	
-	</c:when>
-		
+			</div>
+
+			<div decr="第二个模块，分页数据组"
+				class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+				<div
+					class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
+					<c:choose>
+						<c:when test="${ pageNum!=1 }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=inEmp&page=1&startDate=${ startDate }&endDate=${endDate}"
+								class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=inEmp&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">上一页</a>
+						</c:when>
+					</c:choose>
+
+					<c:forEach begin="1" end="${ pageSum }" var="page">
+						<c:if test="${ pageNum==page }">
+							<a tabindex="0"
+								class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a>
+						</c:if>
+						<c:if test="${ pageNum!=page }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=inEmp&page=${ page }&startDate=${ startDate }&endDate=${endDate}"
+								class="fg-button ui-button ui-state-default">${ page }</a>
+						</c:if>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${ pageNum!=pageSum }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=inEmp&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">下一页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=inEmp&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}"
+								class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
+						</c:when>
+					</c:choose>
+				</div>
+			</div>
+
+		</c:when>
+
 		<c:when test="${ show eq 'outEmp' }">
-		<div id="content" decr="第一个模块，信息遍历输出">
-			<div id="content-header">
-				<h1>报表信息管理</h1>
-			</div>
-			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom"> <i class="icon-home"></i>首页
-				</a> <span class="current">报表信息管理</span>
-			</div>
-					<div class="container-fluid">
-						<div class="row-fluid">
-							<div class="span12">
-								<div class="widget-box">
-									<div class="widget-title">
-										<span class="icon"> <i class="icon-align-justify"></i>
-										</span>
-										<!-- 此处也需要做相应变换 -->
-										<h5>
-											<a href="${pageContext.request.contextPath }/LogsServlet?logsInfo=outEmp">离职员工报表</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<form action="${pageContext.request.contextPath }/LogsServlet?logsInfo=outEmp" method="post" onsubmit="return checkForm()">							
+			<div id="content" decr="第一个模块，信息遍历输出">
+				<div id="content-header">
+					<h1>报表信息管理</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="main.jsp" class="tip-bottom"> <i class="icon-home"></i>首页
+					</a> <span class="current">报表信息管理</span>
+				</div>
+				<div class="container-fluid">
+					<div class="row-fluid">
 						<div class="span12">
 							<div class="widget-box">
 								<div class="widget-title">
-									<span class="current">选择查询开始日期：</span>
-									<input type="date" name="startDate" id="startDate" />
-									<span class="current">选择查询截止日期：</span>
-									<input type="date" name="endDate" id="endDate"/>
-									<input type="submit" value="开始查询" >
+									<span class="icon"> <i class="icon-align-justify"></i>
+									</span>
+									<!-- 此处也需要做相应变换 -->
+									<h5>
+										<a
+											href="${pageContext.request.contextPath }/LogsServlet?logsInfo=outEmp">离职员工报表</a>
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form
+						action="${pageContext.request.contextPath }/LogsServlet?logsInfo=outEmp"
+						method="post" onsubmit="return checkForm()">
+						<div class="span12">
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="current">选择查询开始日期：</span> <input type="date"
+										name="startDate" id="startDate" /> <span class="current">选择查询截止日期：</span>
+									<input type="date" name="endDate" id="endDate" /> <input
+										type="submit" value="开始查询">
 								</div>
 							</div>
 						</div>
 					</form>
 					<script>
-						function checkForm(){
-							if(document.getElementById("startDate").value ==""){
+						function checkForm() {
+							if (document.getElementById("startDate").value == "") {
 								alert("未选择开始日期！");
 								return false;
 							}
-							if(document.getElementById("endDate").value ==""){
+							if (document.getElementById("endDate").value == "") {
 								alert("未选择截止日期！")
 								return false;
 							}
 							return true;
 						}
 					</script>
-					</div>
-	
-					<hr />
-					<div class="row-fluid">
-						<div class="span12" style="padding-left: 30px;">
-							<div class="widget-box">
-								<div class="widget-content nopadding">
-	
-									<table class="table table-bordered table-striped">
-										<thead>
+				</div>
+
+				<hr />
+				<div class="row-fluid">
+					<div class="span12" style="padding-left: 30px;">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>部门名称</th>
+											<th>岗位名称</th>
+											<th>姓名</th>
+											<th>性别</th>
+											<th>离职日期</th>
+											<th>离职原因</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${ list }" var="tempMan">
 											<tr>
-												<th>序号</th>
-												<th>部门名称</th>
-												<th>岗位名称</th>
-												<th>姓名</th>
-												<th>性别</th>
-												<th>离职日期</th>
-												<th>离职原因</th>
+												<td>${ tempMan.id }</td>
+												<td>${ tempMan.dName }</td>
+												<td>${ tempMan.pName }</td>
+												<td>${ tempMan.eName }</td>
+												<td>${ tempMan.gender }</td>
+												<td>${ tempMan.leaveDate }</td>
+												<td>${ tempMan.reason }</td>
 											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${ list }" var="tempMan">
-												<tr>
-													<td>${ tempMan.id }</td>
-													<td>${ tempMan.dName }</td>
-													<td>${ tempMan.pName }</td>
-													<td>${ tempMan.eName }</td>
-													<td>${ tempMan.gender }</td>
-													<td>${ tempMan.leaveDate }</td>
-													<td>${ tempMan.reason }</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
-		</div>
-		                       
-		<div decr="第二个模块，分页数据组"
-			class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
-			<div
-				class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-				<c:choose>
-					<c:when test="${ pageNum!=1 }">
-						<a tabindex="0" href="LogsServlet?logsInfo=outEmp&page=1&startDate=${ startDate }&endDate=${endDate}" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
-						<a tabindex="0" href="LogsServlet?logsInfo=outEmp&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">上一页</a>
-					</c:when>
-				</c:choose>
-			
-				<c:forEach begin="1" end="${ pageSum }" var="page">
-					<c:if test="${ pageNum==page }">
-						<a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a> 
-					</c:if>
-					<c:if test="${ pageNum!=page }">
-						<a tabindex="0" href="LogsServlet?logsInfo=outEmp&page=${ page }&startDate=${ startDate }&endDate=${endDate}" class="fg-button ui-button ui-state-default">${ page }</a>
-					</c:if>
-				</c:forEach>
-				
-				<c:choose>
-					<c:when test="${ pageNum!=pageSum }">
-						<a tabindex="0" href="LogsServlet?logsInfo=outEmp&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">下一页</a>
-						<a tabindex="0" href="LogsServlet?logsInfo=outEmp&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
-					</c:when>
-				</c:choose>
+				</div>
 			</div>
-		</div>
-		
+
+			<div decr="第二个模块，分页数据组"
+				class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+				<div
+					class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
+					<c:choose>
+						<c:when test="${ pageNum!=1 }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=outEmp&page=1&startDate=${ startDate }&endDate=${endDate}"
+								class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=outEmp&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">上一页</a>
+						</c:when>
+					</c:choose>
+
+					<c:forEach begin="1" end="${ pageSum }" var="page">
+						<c:if test="${ pageNum==page }">
+							<a tabindex="0"
+								class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a>
+						</c:if>
+						<c:if test="${ pageNum!=page }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=outEmp&page=${ page }&startDate=${ startDate }&endDate=${endDate}"
+								class="fg-button ui-button ui-state-default">${ page }</a>
+						</c:if>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${ pageNum!=pageSum }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=outEmp&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">下一页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=outEmp&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}"
+								class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
+						</c:when>
+					</c:choose>
+				</div>
+			</div>
+
 		</c:when>
-		
+
 		<c:when test="${ show eq 'deptTrans' }">
-		<div id="content" decr="第一个模块，信息遍历输出">
-			<div id="content-header">
-				<h1>报表信息管理</h1>
-			</div>
-			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom"> <i class="icon-home"></i>首页
-				</a> <span class="current">报表信息管理</span>
-			</div>
-					<div class="container-fluid">
-						<div class="row-fluid">
-							<div class="span12">
-								<div class="widget-box">
-									<div class="widget-title">
-										<span class="icon"> <i class="icon-align-justify"></i>
-										</span>
-										<!-- 此处也需要做相应变换 -->
-										<h5>
-											<a href="${pageContext.request.contextPath }/LogsServlet?logsInfo=deptTrans">部门调动员工报表</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<form action="${pageContext.request.contextPath }/LogsServlet?logsInfo=deptTrans" method="post" onsubmit="return checkForm()">							
+			<div id="content" decr="第一个模块，信息遍历输出">
+				<div id="content-header">
+					<h1>报表信息管理</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="main.jsp" class="tip-bottom"> <i class="icon-home"></i>首页
+					</a> <span class="current">报表信息管理</span>
+				</div>
+				<div class="container-fluid">
+					<div class="row-fluid">
 						<div class="span12">
 							<div class="widget-box">
 								<div class="widget-title">
-									<span class="current">选择查询开始日期：</span>
-									<input type="date" name="startDate" id="startDate" />
-									<span class="current">选择查询截止日期：</span>
-									<input type="date" name="endDate" id="endDate"/>
-									<input type="submit" value="开始查询" >
+									<span class="icon"> <i class="icon-align-justify"></i>
+									</span>
+									<!-- 此处也需要做相应变换 -->
+									<h5>
+										<a
+											href="${pageContext.request.contextPath }/LogsServlet?logsInfo=deptTrans">部门调动员工报表</a>
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form
+						action="${pageContext.request.contextPath }/LogsServlet?logsInfo=deptTrans"
+						method="post" onsubmit="return checkForm()">
+						<div class="span12">
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="current">选择查询开始日期：</span> <input type="date"
+										name="startDate" id="startDate" /> <span class="current">选择查询截止日期：</span>
+									<input type="date" name="endDate" id="endDate" /> <input
+										type="submit" value="开始查询">
 								</div>
 							</div>
 						</div>
 					</form>
 					<script>
-						function checkForm(){
-							if(document.getElementById("startDate").value ==""){
+						function checkForm() {
+							if (document.getElementById("startDate").value == "") {
 								alert("未选择开始日期！");
 								return false;
 							}
-							if(document.getElementById("endDate").value ==""){
+							if (document.getElementById("endDate").value == "") {
 								alert("未选择截止日期！")
 								return false;
 							}
 							return true;
 						}
 					</script>
-					</div>
-	
-					<hr />
-					<div class="row-fluid">
-						<div class="span12" style="padding-left: 30px;">
-							<div class="widget-box">
-								<div class="widget-content nopadding">
-	
-									<table class="table table-bordered table-striped">
-										<thead>
+				</div>
+
+				<hr />
+				<div class="row-fluid">
+					<div class="span12" style="padding-left: 30px;">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>原部门名称</th>
+											<th>新部门名称</th>
+											<th>姓名</th>
+											<th>性别</th>
+											<th>调动日期</th>
+											<th>调动原因</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${ list }" var="tempMan">
 											<tr>
-												<th>序号</th>
-												<th>原部门名称</th>
-												<th>新部门名称</th>
-												<th>姓名</th>
-												<th>性别</th>
-												<th>调动日期</th>
-												<th>调动原因</th>
+												<td>${ tempMan.id }</td>
+												<td>${ tempMan.oldName }</td>
+												<td>${ tempMan.newName }</td>
+												<td>${ tempMan.name }</td>
+												<td>${ tempMan.gender }</td>
+												<td>${ tempMan.date }</td>
+												<td>${ tempMan.reason }</td>
 											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${ list }" var="tempMan">
-												<tr>
-													<td>${ tempMan.id }</td>
-													<td>${ tempMan.oldName }</td>
-													<td>${ tempMan.newName }</td>
-													<td>${ tempMan.name }</td>
-													<td>${ tempMan.gender }</td>
-													<td>${ tempMan.date }</td>
-													<td>${ tempMan.reason }</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
-		</div>
-		<div decr="第二个模块，分页数据组"
-			class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
-			<div
-				class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-				<c:choose>
-					<c:when test="${ pageNum!=1 }">
-						<a tabindex="0" href="LogsServlet?logsInfo=deptTrans&page=1&startDate=${ startDate }&endDate=${endDate}" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
-						<a tabindex="0" href="LogsServlet?logsInfo=deptTrans&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">上一页</a>
-					</c:when>
-				</c:choose>
-			
-				<c:forEach begin="1" end="${ pageSum }" var="page">
-					<c:if test="${ pageNum==page }">
-						<a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a> 
-					</c:if>
-					<c:if test="${ pageNum!=page }">
-						<a tabindex="0" href="LogsServlet?logsInfo=deptTrans&page=${ page }&startDate=${ startDate }&endDate=${endDate}" class="fg-button ui-button ui-state-default">${ page }</a>
-					</c:if>
-				</c:forEach>
-				
-				<c:choose>
-					<c:when test="${ pageNum!=pageSum }">
-						<a tabindex="0" href="LogsServlet?logsInfo=deptTrans&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">下一页</a>
-						<a tabindex="0" href="LogsServlet?logsInfo=deptTrans&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
-					</c:when>
-				</c:choose>
+				</div>
 			</div>
-		</div>
-		
+			<div decr="第二个模块，分页数据组"
+				class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+				<div
+					class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
+					<c:choose>
+						<c:when test="${ pageNum!=1 }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=deptTrans&page=1&startDate=${ startDate }&endDate=${endDate}"
+								class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=deptTrans&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">上一页</a>
+						</c:when>
+					</c:choose>
+
+					<c:forEach begin="1" end="${ pageSum }" var="page">
+						<c:if test="${ pageNum==page }">
+							<a tabindex="0"
+								class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a>
+						</c:if>
+						<c:if test="${ pageNum!=page }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=deptTrans&page=${ page }&startDate=${ startDate }&endDate=${endDate}"
+								class="fg-button ui-button ui-state-default">${ page }</a>
+						</c:if>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${ pageNum!=pageSum }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=deptTrans&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">下一页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=deptTrans&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}"
+								class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
+						</c:when>
+					</c:choose>
+				</div>
+			</div>
+
 		</c:when>
-		
+
 		<c:when test="${ show eq 'postTrans' }">
-		<div id="content" decr="第一个模块，信息遍历输出">
-			<div id="content-header">
-				<h1>报表信息管理</h1>
-			</div>
-			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom"> <i class="icon-home"></i>首页
-				</a> <span class="current">报表信息管理</span>
-			</div>
-					<div class="container-fluid">
-						<div class="row-fluid">
-							<div class="span12">
-								<div class="widget-box">
-									<div class="widget-title">
-										<span class="icon"> <i class="icon-align-justify"></i>
-										</span>
-										<!-- 此处也需要做相应变换 -->
-										<h5>
-											<a href="${ pageContext.request.contextPath }/LogsServlet?logsInfo=postTrans">新聘员工报表</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<form action="${pageContext.request.contextPath }/LogsServlet?logsInfo=postTrans" method="post" onsubmit="return checkForm()">							
+			<div id="content" decr="第一个模块，信息遍历输出">
+				<div id="content-header">
+					<h1>报表信息管理</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="main.jsp" class="tip-bottom"> <i class="icon-home"></i>首页
+					</a> <span class="current">报表信息管理</span>
+				</div>
+				<div class="container-fluid">
+					<div class="row-fluid">
 						<div class="span12">
 							<div class="widget-box">
 								<div class="widget-title">
-									<span class="current">选择查询开始日期：</span>
-									<input type="date" name="startDate" id="startDate" />
-									<span class="current">选择查询截止日期：</span>
-									<input type="date" name="endDate" id="endDate"/>
-									<input type="submit" value="开始查询" >
+									<span class="icon"> <i class="icon-align-justify"></i>
+									</span>
+									<!-- 此处也需要做相应变换 -->
+									<h5>
+										<a
+											href="${ pageContext.request.contextPath }/LogsServlet?logsInfo=postTrans">新聘员工报表</a>
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form
+						action="${pageContext.request.contextPath }/LogsServlet?logsInfo=postTrans"
+						method="post" onsubmit="return checkForm()">
+						<div class="span12">
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="current">选择查询开始日期：</span> <input type="date"
+										name="startDate" id="startDate" /> <span class="current">选择查询截止日期：</span>
+									<input type="date" name="endDate" id="endDate" /> <input
+										type="submit" value="开始查询">
 								</div>
 							</div>
 						</div>
 					</form>
 					<script>
-						function checkForm(){
-							if(document.getElementById("startDate").value ==""){
+						function checkForm() {
+							if (document.getElementById("startDate").value == "") {
 								alert("未选择开始日期！");
 								return false;
 							}
-							if(document.getElementById("endDate").value ==""){
+							if (document.getElementById("endDate").value == "") {
 								alert("未选择截止日期！")
 								return false;
 							}
 							return true;
 						}
 					</script>
-					</div>
-	
-					<hr />
-					<div class="row-fluid">
-						<div class="span12" style="padding-left: 30px;">
-							<div class="widget-box">
-								<div class="widget-content nopadding">
-	
-									<table class="table table-bordered table-striped">
-										<thead>
+				</div>
+
+				<hr />
+				<div class="row-fluid">
+					<div class="span12" style="padding-left: 30px;">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>部门名称</th>
+											<th>原岗位名称</th>
+											<th>新岗位名称</th>
+											<th>姓名</th>
+											<th>性别</th>
+											<th>调动日期</th>
+											<th>调动原因</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${ list }" var="tempMan">
 											<tr>
-												<th>序号</th>
-												<th>部门名称</th>
-												<th>原岗位名称</th>
-												<th>新岗位名称</th>
-												<th>姓名</th>
-												<th>性别</th>
-												<th>调动日期</th>
-												<th>调动原因</th>
+												<td>${ tempMan.id }</td>
+												<td>${ tempMan.dName }</td>
+												<td>${ tempMan.oldName }</td>
+												<td>${ tempMan.newName }</td>
+												<td>${ tempMan.name }</td>
+												<td>${ tempMan.gender }</td>
+												<td>${ tempMan.date }</td>
+												<td>${ tempMan.reason }</td>
 											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${ list }" var="tempMan">
-												<tr>
-													<td>${ tempMan.id }</td>
-													<td>${ tempMan.dName }</td>
-													<td>${ tempMan.oldName }</td>
-													<td>${ tempMan.newName }</td>
-													<td>${ tempMan.name }</td>
-													<td>${ tempMan.gender }</td>
-													<td>${ tempMan.date }</td>
-													<td>${ tempMan.reason }</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
-		</div>                      
-		<div decr="第二个模块，分页数据组"
-			class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
-			<div
-				class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-				<c:choose>
-					<c:when test="${ pageNum!=1 }">
-						<a tabindex="0" href="LogsServlet?logsInfo=postTrans&page=1&startDate=${ startDate }&endDate=${endDate}" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
-						<a tabindex="0" href="LogsServlet?logsInfo=postTrans&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">上一页</a>
-					</c:when>
-				</c:choose>
-			
-				<c:forEach begin="1" end="${ pageSum }" var="page">
-					<c:if test="${ pageNum==page }">
-						<a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a> 
-					</c:if>
-					<c:if test="${ pageNum!=page }">
-						<a tabindex="0" href="LogsServlet?logsInfo=postTrans&page=${ page }&startDate=${ startDate }&endDate=${endDate}" class="fg-button ui-button ui-state-default">${ page }</a>
-					</c:if>
-				</c:forEach>
-				
-				<c:choose>
-					<c:when test="${ pageNum!=pageSum }">
-						<a tabindex="0" href="LogsServlet?logsInfo=postTrans&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">下一页</a>
-						<a tabindex="0" href="LogsServlet?logsInfo=postTrans&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
-					</c:when>
-				</c:choose>
+				</div>
 			</div>
-		</div>
-		
+			<div decr="第二个模块，分页数据组"
+				class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+				<div
+					class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
+					<c:choose>
+						<c:when test="${ pageNum!=1 }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=postTrans&page=1&startDate=${ startDate }&endDate=${endDate}"
+								class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=postTrans&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">上一页</a>
+						</c:when>
+					</c:choose>
+
+					<c:forEach begin="1" end="${ pageSum }" var="page">
+						<c:if test="${ pageNum==page }">
+							<a tabindex="0"
+								class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a>
+						</c:if>
+						<c:if test="${ pageNum!=page }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=postTrans&page=${ page }&startDate=${ startDate }&endDate=${endDate}"
+								class="fg-button ui-button ui-state-default">${ page }</a>
+						</c:if>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${ pageNum!=pageSum }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=postTrans&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">下一页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=postTrans&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}"
+								class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
+						</c:when>
+					</c:choose>
+				</div>
+			</div>
+
 		</c:when>
-		
+
 		<c:when test="${ show eq 'Personnel' }">
-		<div id="content" decr="第一个模块，信息遍历输出">
-			<div id="content-header">
-				<h1>报表信息管理</h1>
-			</div>
-			<div id="breadcrumb">
-				<a href="main.html" class="tip-bottom"> <i class="icon-home"></i>首页
-				</a> <span class="current">报表信息管理</span>
-			</div>
-					<div class="container-fluid">
-						<div class="row-fluid">
-							<div class="span12">
-								<div class="widget-box">
-									<div class="widget-title">
-										<span class="icon"> <i class="icon-align-justify"></i>
-										</span>
-										<!-- 此处也需要做相应变换 -->
-										<h5>
-											<a href="/LogsServlet?logsInfo=Personnel">人事月报</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<form action="${pageContext.request.contextPath }/LogsServlet?logsInfo=Personnel" method="post" onsubmit="return checkForm()">							
+			<div id="content" decr="第一个模块，信息遍历输出">
+				<div id="content-header">
+					<h1>报表信息管理</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="main.jsp" class="tip-bottom"> <i class="icon-home"></i>首页
+					</a> <span class="current">报表信息管理</span>
+				</div>
+				<div class="container-fluid">
+					<div class="row-fluid">
 						<div class="span12">
 							<div class="widget-box">
 								<div class="widget-title">
-									<span class="current">选择查询开始日期：</span>
-									<input type="date" name="startDate" id="startDate" />
-									<span class="current">选择查询截止日期：</span>
-									<input type="date" name="endDate" id="endDate"/>
-									<input type="submit" value="开始查询" >
+									<span class="icon"> <i class="icon-align-justify"></i>
+									</span>
+									<!-- 此处也需要做相应变换 -->
+									<h5>
+										<a href="/LogsServlet?logsInfo=Personnel">人事月报</a>
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form
+						action="${pageContext.request.contextPath }/LogsServlet?logsInfo=Personnel"
+						method="post" onsubmit="return checkForm()">
+						<div class="span12">
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="current">选择查询开始日期：</span> <input type="date"
+										name="startDate" id="startDate" /> <span class="current">选择查询截止日期：</span>
+									<input type="date" name="endDate" id="endDate" /> <input
+										type="submit" value="开始查询">
 								</div>
 							</div>
 						</div>
 					</form>
 					<script>
-						function checkForm(){
-							if(document.getElementById("startDate").value ==""){
+						function checkForm() {
+							if (document.getElementById("startDate").value == "") {
 								alert("未选择开始日期！");
 								return false;
 							}
-							if(document.getElementById("endDate").value ==""){
+							if (document.getElementById("endDate").value == "") {
 								alert("未选择截止日期！")
 								return false;
 							}
 							return true;
 						}
 					</script>
-					</div>
-	
-					<hr />
-					<div class="row-fluid">
-						<div class="span12" style="padding-left: 30px;">
-							<div class="widget-box">
-								<div class="widget-content nopadding">
-	
-									<table class="table table-bordered table-striped">
-										<thead>
+				</div>
+
+				<hr />
+				<div class="row-fluid">
+					<div class="span12" style="padding-left: 30px;">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th rowspan="2">部门名称</th>
+											<th colspan="6">人数统计</th>
+											<th colspan="4">学历统计</th>
+										</tr>
+										<tr>
+											<th>月初人数</th>
+											<th>月末人数</th>
+											<th>本月新入职</th>
+											<th>本月离职</th>
+											<th>本月调入</th>
+											<th>本月调出</th>
+											<th>研究生</th>
+											<th>本科</th>
+											<th>大专</th>
+											<th>高中及以下</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${ list }" var="tempMan" varStatus="p">
 											<tr>
-												<th rowspan="2">部门名称</th>
-												<th colspan="6">人数统计</th>
-												<th colspan="4">学历统计</th>										
+												<td>${ tempMan.dName }</td>
+												<td>${ tempMan.earlyMonthAll }</td>
+												<td>${ tempMan.endMonthAll }</td>
+												<td>${ tempMan.hireNumber }</td>
+												<td>${ tempMan.leaveNumber }</td>
+												<td>${ tempMan.inNumber }</td>
+												<td>${ tempMan.outNumber }</td>
+												<td>${ tempMan.graduate }</td>
+												<td>${ tempMan.regular }</td>
+												<td>${ tempMan.junior }</td>
+												<td>${ tempMan.highSchool }</td>
 											</tr>
-											<tr>
-												<th>月初人数</th>
-												<th>月末人数</th>
-												<th>本月新入职</th>
-												<th>本月离职</th>
-												<th>本月调入</th>
-												<th>本月调出</th>
-												<th>研究生</th>
-												<th>本科</th>
-												<th>大专</th>
-												<th>高中及以下</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${ list }" var="tempMan" varStatus="p">
-												<tr>
-													<td>${ tempMan.dName }</td>
-													<td>${ tempMan.earlyMonthAll }</td>
-													<td>${ tempMan.endMonthAll }</td>
-													<td>${ tempMan.hireNumber }</td>
-													<td>${ tempMan.leaveNumber }</td>
-													<td>${ tempMan.inNumber }</td>
-													<td>${ tempMan.outNumber }</td>
-													<td>${ tempMan.graduate }</td>
-													<td>${ tempMan.regular }</td>
-													<td>${ tempMan.junior }</td>
-													<td>${ tempMan.highSchool }</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
-		</div>
-	                     
-		<div decr="第二个模块，分页数据组"
-			class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
-			<div
-				class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
-				<c:choose>
-					<c:when test="${ pageNum!=1 }">
-						<a tabindex="0" href="LogsServlet?logsInfo=Personnel&page=1&startDate=${ startDate }&endDate=${endDate}" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
-						<a tabindex="0" href="LogsServlet?logsInfo=Personnel&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">上一页</a>
-					</c:when>
-				</c:choose>
-			
-				<c:forEach begin="1" end="${ pageSum }" var="page">
-					<c:if test="${ pageNum==page }">
-						<a tabindex="0" class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a> 
-					</c:if>
-					<c:if test="${ pageNum!=page }">
-						<a tabindex="0" href="LogsServlet?logsInfo=Personnel&page=${ page }&startDate=${ startDate }&endDate=${endDate}" class="fg-button ui-button ui-state-default">${ page }</a>
-					</c:if>
-				</c:forEach>
-				
-				<c:choose>
-					<c:when test="${ pageNum!=pageSum }">
-						<a tabindex="0" href="LogsServlet?logsInfo=Personnel&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}" class="previous fg-button ui-button ui-state-default">下一页</a>
-						<a tabindex="0" href="LogsServlet?logsInfo=Personnel&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
-					</c:when>
-				</c:choose>
+				</div>
 			</div>
-		</div>
-		
+
+			<div decr="第二个模块，分页数据组"
+				class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+				<div
+					class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers">
+					<c:choose>
+						<c:when test="${ pageNum!=1 }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=Personnel&page=1&startDate=${ startDate }&endDate=${endDate}"
+								class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default">首页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=Personnel&page=${ pageNum-1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">上一页</a>
+						</c:when>
+					</c:choose>
+
+					<c:forEach begin="1" end="${ pageSum }" var="page">
+						<c:if test="${ pageNum==page }">
+							<a tabindex="0"
+								class="fg-button ui-button ui-state-default ui-state-disabled">${ page }</a>
+						</c:if>
+						<c:if test="${ pageNum!=page }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=Personnel&page=${ page }&startDate=${ startDate }&endDate=${endDate}"
+								class="fg-button ui-button ui-state-default">${ page }</a>
+						</c:if>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${ pageNum!=pageSum }">
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=Personnel&page=${ pageNum+1 }&startDate=${ startDate }&endDate=${endDate}"
+								class="previous fg-button ui-button ui-state-default">下一页</a>
+							<a tabindex="0"
+								href="LogsServlet?logsInfo=Personnel&page=${ pageSum }&startDate=${ startDate }&endDate=${endDate}"
+								class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default">尾页</a>
+						</c:when>
+					</c:choose>
+				</div>
+			</div>
+
 		</c:when>
 
 	</c:choose>

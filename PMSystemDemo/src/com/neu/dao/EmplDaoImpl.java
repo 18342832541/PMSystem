@@ -99,7 +99,7 @@ public class EmplDaoImpl implements EmplDao {
 
 	@Override
 	public List<Empl> getLikeName(String ename) throws Exception {
-		String sql = "select * from empl where ename like ?";
+		String sql = "select * from empl where name like ?";
 		
 		DBUtils util = new DBUtils();
 		Connection connection = util.getConnection();
@@ -130,48 +130,6 @@ public class EmplDaoImpl implements EmplDao {
 			hiredate = rs.getDate("hiredate");
 			sal = rs.getDouble("sal");
 			
-			
-			empl = new Empl(employeeId, name, sex, birthDate, idNumber, dept, job, hiredate, sal);
-			list.add(empl);
-		}
-		
-		util.closeConnection(connection);
-		return list;
-	}
-
-	@Override
-	public List<Empl> getAll() throws Exception {
-		String sql = "select * from empl";
-		
-		DBUtils util = new DBUtils();
-		Connection connection = util.getConnection();
-		
-		ResultSet rs = util.executeQuery(connection, sql);
-		
-		Empl empl = null;
-		Integer employeeId;
-		 String name;
-		 String sex;
-		 String birthDate;
-		 String idNumber;
-		 String dept;
-		 String job;
-		  Date hiredate;
-		 Double sal;
-		
-		List<Empl> list = new ArrayList<>();
-		while(rs.next()) {
-			employeeId = rs.getInt("employeeId");
-			name = rs.getString("name");
-			
-			sex = rs.getString("gender");
-			birthDate = rs.getString("birthDate");
-			idNumber = rs.getString("idNumber");
-			dept = rs.getString("dept");
-			job = rs.getString("job");
-			hiredate = rs.getDate("hiredate");
-			
-			sal = rs.getDouble("sal");		
 			
 			empl = new Empl(employeeId, name, sex, birthDate, idNumber, dept, job, hiredate, sal);
 			list.add(empl);
@@ -221,4 +179,59 @@ public class EmplDaoImpl implements EmplDao {
 		return empl;
 	}
 
+	@Override
+	public List<Empl> getPaged(int pageSize, int pageNum) throws Exception{
+		String sql = "select * from empl limit ?,?";
+		
+		DBUtils util = new DBUtils();
+		Connection connection = util.getConnection();
+		
+		ResultSet rs = util.executeQuery(connection, sql, (pageNum-1)*pageSize, pageSize);
+		
+		Empl empl = null;
+		Integer employeeId;
+		 String name;
+		 String sex;
+		 String birthDate;
+		 String idNumber;
+		 String dept;
+		 String job;
+		 Date hiredate;
+		 Double sal;
+		
+		List<Empl> list = new ArrayList<>();
+		while(rs.next()) {
+			employeeId = rs.getInt("employeeId");
+			name = rs.getString("name");
+			
+			sex = rs.getString("gender");
+			birthDate = rs.getString("birthDate");
+			idNumber = rs.getString("idNumber");
+			dept = rs.getString("dept");
+			job = rs.getString("job");
+			hiredate = rs.getDate("hiredate");
+			
+			sal = rs.getDouble("sal");		
+			empl = new Empl(employeeId, name, sex, birthDate, idNumber, dept, job, hiredate, sal);
+			list.add(empl);
+			}
+		util.closeConnection(connection);
+		return list;
+	}
+	
+	@Override
+	public int count() throws Exception {
+		DBUtils db = new DBUtils() ;
+	    String sql= "select count(*) from empl ";
+	    Connection connection = db.getConnection();
+	    ResultSet rs = db.executeQuery(connection, sql);
+	    int count=0;
+	    if(rs.next()) {
+			count = rs.getInt(1);
+		}
+		
+		db.closeConnection(connection);
+		return count;
+
+	}
 }

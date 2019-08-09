@@ -9,14 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.neu.entity.Dept;
+import com.neu.util.DBUtils;
 
 public class DeptDaoImpl implements DeptDao {
+	DBUtils db = new DBUtils();
 	
 	@Override
 	public List<Dept> getAll() throws Exception {
 		String sql = "select * from deptmgr order by id";
 		
-		DBUtils db = new DBUtils();
 		Connection connection = db.getConnection();
 		
 		ResultSet rs = db.executeQuery(connection, sql);
@@ -64,9 +65,7 @@ public class DeptDaoImpl implements DeptDao {
 				
 		};
 		
-		DBUtils util = new DBUtils();
-		
-		int n = util.executeUpdate(sql, params);
+		int n = db.executeUpdate(sql, params);
 		
 		return n;
 	}
@@ -75,7 +74,6 @@ public class DeptDaoImpl implements DeptDao {
 		
 	String sql = "select * from deptmgr where id =?";
 		
-		DBUtils db = new DBUtils();
 		Connection connection = db.getConnection();
 		
 		ResultSet rs = db.executeQuery(connection, sql,id);
@@ -103,8 +101,7 @@ public class DeptDaoImpl implements DeptDao {
 
 	@Override
 	public int delete(int id) throws Exception {
-		DBUtils db = new DBUtils();
-		
+
 		String sql = "delete from deptmgr where id =?";
 		
 		int n = db.executeUpdate(sql, id);
@@ -113,7 +110,6 @@ public class DeptDaoImpl implements DeptDao {
 	@Override
 	public int update(Dept dept) throws Exception {
 		
-		DBUtils db = new DBUtils();
 		String sql = "update deptmgr set dname=?,type=?,phone=?,email=?,depict=?,mgr=?,date=? where id=?";
 		
 		int n = db.executeUpdate(sql, dept.getDname(),dept.getType(),dept.getPhone(),dept.getEmail(),dept.getDepict(),dept.getMgr(),dept.getDate(),dept.getId());
@@ -124,7 +120,6 @@ public class DeptDaoImpl implements DeptDao {
 	public List<Dept> getPaged(int pageSize, int pageNum) throws Exception {
     String sql = "select * from deptmgr order by id limit ?,?";
 		
-		DBUtils db = new DBUtils();
 		Connection connection = db.getConnection();
 		ResultSet rs = db.executeQuery(connection, sql,(pageNum-1)*pageSize,pageSize);
 		
@@ -159,7 +154,7 @@ public class DeptDaoImpl implements DeptDao {
 
 	@Override
 	public int count() throws Exception {
-		 DBUtils db = new DBUtils() ;
+
 		    String sql= "select count(*) from deptmgr ";
 		    Connection connection = db.getConnection();
 		    ResultSet rs = db.executeQuery(connection, sql);

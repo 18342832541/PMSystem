@@ -1,12 +1,6 @@
 package com.neu.servlet;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,37 +12,21 @@ import com.neu.dao.EmplDaoImpl;
 import com.neu.entity.Empl;
 
 /**
- * Servlet implementation class AddServlet
- * @param <Employeeinformation>
+ * Servlet implementation class GetEmpByIdServlet
  */
-@WebServlet("/AddEmpServlet")
-public class AddEmpServlet<Employeeinformation> extends HttpServlet {
+@WebServlet("/GetEmpByIdServlet")
+public class GetEmpByIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private DateFormat f;
-	private String idNumber;
-	private Date birthDate;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddEmpServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EmplDao emplDao = new EmplDaoImpl();
-		
-		
-		List<Empl> empls = null;
+		int id = Integer.parseInt(request.getParameter("id"));
+		EmplDao dao = new EmplDaoImpl();
 		try {
-			 empls =  emplDao.getAll();
-			request.setAttribute(" empls",  empls);
-			
-			request.getRequestDispatcher("/").forward(request, response);
+			Empl empl = dao.getById(id);
+			if(empl != null) {
+				request.setAttribute("empl", empl);
+				request.getRequestDispatcher("viewEmpInfo.jsp").forward(request, response);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

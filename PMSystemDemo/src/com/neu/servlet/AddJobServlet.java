@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.neu.entity.Job;
-import com.neu.service.JobDao;
-import com.neu.service.JobDaoImplService;
+import com.neu.service.JobService;
+import com.neu.service.JobServiceImpl;
 
 
 @WebServlet("/AddJobServlet")
@@ -20,7 +20,7 @@ public class AddJobServlet extends HttpServlet {
         super();
     }
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		    request.setCharacterEncoding("utf-8");
 		    response.setCharacterEncoding("utf-8");
@@ -28,7 +28,7 @@ public class AddJobServlet extends HttpServlet {
 		    String ename = request.getParameter("ename");
 		    String postType = request.getParameter("postType");
 		    String postAllot = request.getParameter("postAllot");
-		    JobDao jobDao = new JobDaoImplService();
+		    JobService jobDao = new JobServiceImpl();
 		    Job job = new Job(id,ename,postType,postAllot);
 		      request.setAttribute("job", job);
 		     try {

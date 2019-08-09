@@ -1,17 +1,16 @@
 package com.neu.service;
 import java.util.List;
 
+import com.neu.dao.JobDao;
 import com.neu.dao.JobDaoImpl;
 import com.neu.entity.Job;
 
-public class JobDaoImplService implements JobDao {
-       private JobDaoImpl jobDao = new JobDaoImpl();
+public class JobServiceImpl implements JobService {
+       private JobDao jobDao = new JobDaoImpl();
 	@Override
 	public int insert(Job job) throws Exception {
 	    int n = jobDao.insert(job);
 		return n;
-		
-		
 		
 	}
 

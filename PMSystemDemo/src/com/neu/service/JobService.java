@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.neu.entity.Job;
 
-public interface JobDao {
+public interface JobService {
 	 List<Job>  getAll() throws Exception; 
      int insert(Job job) throws Exception;
      int updateAll(Job job) throws Exception; 

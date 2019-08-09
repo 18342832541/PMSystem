@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
 import com.neu.service.DeptService;
 import com.neu.service.DeptServiceImpl;
 
@@ -33,7 +32,7 @@ public class DeleteDeptServlet extends HttpServlet {
 		try {
 			int n = deptService.delete(id);
 			if(n == 1) {
-				request.getRequestDispatcher("/Del.jsp").forward(request, response);
+				response.sendRedirect(request.getContextPath()+"/GetAllDeptServlet");
 				
 			}
 		} catch (Exception e) {

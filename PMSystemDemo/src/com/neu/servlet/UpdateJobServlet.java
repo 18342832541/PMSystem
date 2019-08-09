@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.neu.entity.Job;
-import com.neu.service.JobDao;
-import com.neu.service.JobDaoImplService;
+import com.neu.service.JobService;
+import com.neu.service.JobServiceImpl;
 @WebServlet("/UpdateJobServlet")
 public class UpdateJobServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,7 +19,7 @@ public class UpdateJobServlet extends HttpServlet {
 		    request.setCharacterEncoding("utf-8");
 		    response.setCharacterEncoding("utf-8");
 		    int id =Integer.parseInt( request.getParameter("id"));
-		    JobDao jobDao= new JobDaoImplService();  
+		    JobService jobDao= new JobServiceImpl();  
 			try {
 				Job	job = jobDao.getById(id);
 				request.setAttribute("job", job);

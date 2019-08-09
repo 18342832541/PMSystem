@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.neu.entity.Job;
-import com.neu.service.JobDao;
-import com.neu.service.JobDaoImplService;
+import com.neu.service.JobService;
+import com.neu.service.JobServiceImpl;
 
 /**
  * Servlet implementation class GetByIdServlet
@@ -26,7 +26,7 @@ public class GetByIdServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  request.setCharacterEncoding("utf-8");
 	       int id = Integer.parseInt(request.getParameter("id"));
-	    JobDao jobDao = new JobDaoImplService();
+	    JobService jobDao = new JobServiceImpl();
 	    try {
 			Job job = jobDao.getById(id);
 			request.setAttribute("job", job);

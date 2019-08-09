@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.neu.entity.Job;
-import com.neu.service.JobDao;
-import com.neu.service.JobDaoImplService;
+import com.neu.service.JobService;
+import com.neu.service.JobServiceImpl;
 
 /**
  * Servlet implementation class GetAllJobServlet
@@ -26,14 +26,13 @@ public class GetAllJobServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pageSize=3;
+		int pageSize=5;
         int pageNum=1;
         String num = request.getParameter("pageNum");
 	        if(num !=null) {
 	        	pageNum=Integer.parseInt(num);
-	
-	        }  
-          JobDao jobDao = new JobDaoImplService();
+	        } 
+          JobService jobDao = new JobServiceImpl();
 	  try {
 		List<Job>  list= jobDao.getPaged(pageSize, pageNum);
 		request.setAttribute("list", list);

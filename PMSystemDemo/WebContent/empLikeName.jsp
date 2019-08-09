@@ -85,45 +85,10 @@
 			<a href="main.jsp" class="tip-bottom"> <i class="icon-home"></i>
 				首页
 			</a> <a href="${pageContext.request.contextPath }/GetAllEmpsServle" class="current">员工信息管理</a>
+			<a href="#" class="current">模糊查询》查询结果：</a>
 		</div>
-		<form
-			action="${ pageContext.request.contextPath }/GetEmpLikeNameServlet"
-			method="post" name="searchForm">
-			<input type="hidden" name="pagenum" id="pagenum" />
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="control-group">
-						<span class="span3"> 根据姓名查询(支持模糊查询)：<input id="name" name="name"
-							type="text" style="width: 65%" />
-						</span>
-					</div>
-					<div class="control-group">
-						 <span class="span3">
-							<button class="btn btn-info" onclick="submitForm(1);">
-								<i class="icon-white icon-search"></i> 查询
-							</button>
-							<button type="button" class="btn btn-info" onclick="resetForm()">
-								<i class="icon-white icon-repeat"></i> 重置
-							</button>
-						</span>
-					</div>
-				</div>
-			</div>
-		</form>
-		<hr />
-		<div class="row-fluid">
-			<div class="span12" style="padding-left: 30px;">
-				<button class="btn btn-info" onclick="addemp();">
-					<i class="icon-white icon-plus"></i> 新增
-				</button>
-				<script type="text/javascript">
-						function addemp(){
-							
-							location.href="${ pageContext.request.contextPath }/addEmp.jsp";
-						}
-					</script>
-			</div>
 
+		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
 					<div class="widget-content nopadding">
@@ -164,12 +129,9 @@
 											<button class="btn btn-success"
 												onclick="gotoChange${sta.count}()">
 												<i class="icon-white icon-share"></i> 调转
-											</button>
-											<button class="btn btn-danger" onclick="DelEmp${sta.count}()">
-												<i class="icon-white icon-minus"></i> 删除
 											</button> <script type="text/javascript">
 											  function allmessage${sta.count}(){
-                                                   location.href="${pageContext.request.contextPath}/GetEmpByIdServlet?id=${empl.employeeId}";
+                                                   location.href="${pageContext.request.contextPath}/GetByIdServlet?id=${empl.employeeId}";
                                                }
                                               function gotomodify${sta.count}(){
                                                   location.href="${pageContext.request.contextPath}/GetUpServlet?id=${empl.employeeId}";
@@ -180,42 +142,10 @@
 											  function lizhi${sta.count}(){
                                                   location.href = "deletEmp.jsp";
                                               }
-											  function DelEmp${sta.count}(){
-												  if(confirm("确认删除该员工吗？")){
-	                                                  location.href = "${pageContext.request.contextPath}/DelEmplServlet?id=${empl.employeeId}";		  
-												  }
-                                              }
                                             </script>
 										</td>
 									</tr>
 								</c:forEach>
-								<tr>
-  <td colspan="7">
-  <c:if test="${pageNum==1 }">
-     首页 上一页
-  </c:if>
-  <c:if test="${pageNum>1 }">
-<a href="${ pageContext.request.contextPath }/GetAllEmpsServle?pageNum=1">[首页]</a>
-  <a href="${ pageContext.request.contextPath }/GetAllEmpsServle?pageNum=${ pageNum-1 }">[上一页]</a>
-  </c:if>
- 
-   <c:forEach begin="1" end="${ page }" var="pageNum1">
-    <c:if test="${pageNum1==pageNum }">
-      [${pageNum1 }]
-   </c:if>
-    <c:if test="${pageNum1!=pageNum }">
-      <a href="${ pageContext.request.contextPath }/GetAllEmpsServle?pageNum=${ pageNum1 }">[${ pageNum1 }]</a>
-   </c:if>				
-   </c:forEach>
-   <c:if test="${pageNum==page }">
-      下一页   末页
-   </c:if>
-   <c:if test="${pageNum<page }">
-   <a href="${ pageContext.request.contextPath }/GetAllEmpsServle?pageNum=${ pageNum+1 }">下一页</a>
-   <a href="${ pageContext.request.contextPath }/GetAllEmpsServle?pageNum=${ page}">末页</a> 
-   </c:if>
-  </td>
- </tr>   
 							</tbody>
 						</table>
 					</div>
@@ -230,4 +160,3 @@
 
 </body>
 </html>
-

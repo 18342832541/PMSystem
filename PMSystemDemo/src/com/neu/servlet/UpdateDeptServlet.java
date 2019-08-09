@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.neu.dao.DeptDao;
-import com.neu.dao.DeptDaoImpl;
 import com.neu.entity.Dept;
 import com.neu.service.DeptService;
 import com.neu.service.DeptServiceImpl;
@@ -29,7 +27,6 @@ public class UpdateDeptServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    request.setCharacterEncoding("utf-8");
-	    response.setCharacterEncoding("utf-8");
 		int id = Integer.parseInt(request.getParameter("id"));
 		String dname = request.getParameter("dname");
 		String type = request.getParameter("type");
@@ -44,7 +41,7 @@ public class UpdateDeptServlet extends HttpServlet {
 			
 			Dept dept = new Dept(id, dname,  type, phone, email, depict, mgr, date);
 			
-			  int n = deptService.update(dept);
+			int n = deptService.update(dept);
 			
 			if(n == 1) {
 				response.sendRedirect(request.getContextPath()+"/GetAllDeptServlet");

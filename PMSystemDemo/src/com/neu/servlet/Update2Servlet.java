@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.neu.entity.Job;
-import com.neu.service.JobDao;
-import com.neu.service.JobDaoImplService;
+import com.neu.service.JobService;
+import com.neu.service.JobServiceImpl;
 
 /**
  * Servlet implementation class Update2Servlet
@@ -17,7 +17,7 @@ import com.neu.service.JobDaoImplService;
 @WebServlet("/Update2Servlet")
 public class Update2Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+      
     
     public Update2Servlet() {
         super();
@@ -32,7 +32,7 @@ public class Update2Servlet extends HttpServlet {
 	    String ename = request.getParameter("ename");
 	    String postType = request.getParameter("postType");
 	    String postAllot = request.getParameter("postAllot");
-	    JobDao jobDao = new JobDaoImplService();
+	    JobService jobDao = new JobServiceImpl();
 	    Job job = new Job(id,ename,postType,postAllot);
 	     try {
 			int n = jobDao.updateAll(job);

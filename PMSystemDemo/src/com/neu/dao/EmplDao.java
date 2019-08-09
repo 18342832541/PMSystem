@@ -12,6 +12,7 @@ public interface EmplDao {
 	
 	Empl getById(Integer id) throws Exception;
 	List<Empl> getLikeName(String ename) throws Exception;
-	List<Empl> getAll() throws Exception;
+	List<Empl> getPaged(int pageSize, int pageNum) throws Exception;
 	
+	int count() throws Exception;
 }
